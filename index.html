@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Estate Chain — международные новостройки с рейтингом</title>
+<meta name="description" content="Отобранные новостройки мира для инвестиций: единый формат данных, рейтинг доходности, ликвидности и риска, планы оплаты и сроки сдачи.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp">
+<style>
+:root{
+  --ivory:#F6F1E9; --paper:#FBF8F3; --sand:#E9DFCF; --line:#D8CBB6;
+  --camel:#A87B4F; --camel-deep:#8A6239; --ink:#1D1A16; --ink-2:#4A433A; --mute:#7C7266;
+  --serif:'Cormorant Garamond', 'Times New Roman', serif;
+  --sans:'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  --pad:clamp(20px,5vw,72px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--pad)}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);font-weight:500}
+.serif{font-family:var(--serif);font-weight:300}
+.rule{height:1px;background:var(--line);border:0}
+
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s var(--ease),border-color .4s var(--ease);border-bottom:1px solid transparent}
+header.solid{background:rgba(246,241,233,.94);backdrop-filter:blur(8px);border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{font-family:var(--serif);font-size:22px;letter-spacing:.32em;text-transform:uppercase;font-weight:400;white-space:nowrap}
+.brand small{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.42em;color:inherit;opacity:.7;margin-top:-2px}
+.menu{display:flex;gap:36px;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.menu a{position:relative;padding:4px 0}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:currentColor;transition:width .35s var(--ease)}
+.menu a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:12px;height:46px;padding:0 26px;border:1px solid currentColor;font-size:11px;letter-spacing:.2em;text-transform:uppercase;background:transparent;cursor:pointer;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s}
+.btn:hover{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+.btn.fill{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+.btn.fill:hover{background:var(--camel-deep);border-color:var(--camel-deep)}
+header:not(.solid){color:#fff}
+header:not(.solid) .btn:hover{background:#fff;color:var(--ink);border-color:#fff}
+.burger{display:none;background:none;border:0;width:28px;height:20px;position:relative;cursor:pointer}
+.burger span{position:absolute;left:0;right:0;height:1px;background:currentColor}
+.burger span:nth-child(1){top:4px}.burger span:nth-child(2){bottom:4px}
+
+/* hero */
+.hero{position:relative;height:100svh;min-height:640px;color:#fff;overflow:hidden}
+.hero .bg{position:absolute;inset:0}
+.hero .bg img{transform:scale(1.04);animation:settle 2.4s var(--ease) forwards}
+@keyframes settle{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,26,22,.35) 0%,rgba(29,26,22,.05) 35%,rgba(29,26,22,.55) 100%)}
+.hero .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(32px,6vh,64px)}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(44px,7.4vw,118px);line-height:.98;letter-spacing:-.01em;max-width:14ch}
+.hero h1 em{font-style:italic}
+.hero .lead{max-width:44ch;margin-top:24px;font-size:15px;opacity:.9;font-weight:300}
+.hero .eyebrow{color:rgba(255,255,255,.8);margin-bottom:22px}
+
+.search{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr) auto;background:var(--paper);color:var(--ink);max-width:980px}
+.search label{display:flex;flex-direction:column;padding:16px 24px;border-right:1px solid var(--line);cursor:pointer}
+.search label span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.search select{border:0;background:transparent;font-size:15px;padding:4px 0 0;appearance:none;cursor:pointer;outline:none}
+.search button{border:0;background:var(--ink);color:var(--ivory);padding:0 40px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:background .3s}
+.search button:hover{background:var(--camel-deep)}
+
+/* sections */
+section{padding:clamp(80px,11vw,160px) 0}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.head h2{font-family:var(--serif);font-weight:300;font-size:clamp(36px,4.6vw,68px);line-height:1.02;letter-spacing:-.005em}
+.head p{max-width:46ch;color:var(--ink-2);justify-self:end;font-size:15px}
+
+/* principles */
+.principles{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.principles div{padding:40px 40px 8px 0}
+.principles div+div{padding-left:40px;border-left:1px solid var(--line)}
+.principles .n{font-family:var(--serif);font-size:15px;color:var(--camel)}
+.principles h3{font-family:var(--serif);font-weight:400;font-size:28px;margin:14px 0 12px}
+.principles p{color:var(--ink-2);font-size:14.5px;max-width:34ch}
+
+/* listings */
+.listings{background:var(--paper)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:40px}
+.chip{border:1px solid var(--line);background:transparent;height:38px;padding:0 18px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+.sort{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.sort select{border:0;border-bottom:1px solid var(--line);background:transparent;padding:6px 2px;font-size:13px;letter-spacing:0;text-transform:none;color:var(--ink);outline:none;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 32px}
+.card{display:flex;flex-direction:column;cursor:pointer}
+.card .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--sand)}
+.card .ph img{transition:transform 1.2s var(--ease)}
+.card:hover .ph img{transform:scale(1.035)}
+.score{position:absolute;top:16px;left:16px;background:var(--paper);padding:8px 12px 7px;display:flex;align-items:baseline;gap:8px}
+.score b{font-family:var(--serif);font-weight:500;font-size:24px;line-height:1}
+.score i{font-style:normal;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.fav{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.7);background:transparent;color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .25s}
+.fav:hover,.fav[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.card .meta{display:flex;justify-content:space-between;margin-top:20px}
+.card h3{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1;margin:8px 0 14px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);padding-top:14px;gap:8px}
+.facts dt{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.facts dd{font-size:14px;margin-top:2px;font-variant-numeric:tabular-nums}
+.price{font-family:var(--serif);font-size:20px;margin-top:14px}
+.price span{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-right:8px}
+.note{margin-top:48px;font-size:12px;color:var(--mute)}
+.empty{grid-column:1/-1;padding:60px 0;text-align:center;color:var(--mute);font-family:var(--serif);font-size:24px}
+
+/* rating */
+.rating table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.rating th{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:500;text-align:left;padding:0 12px 16px;border-bottom:1px solid var(--ink)}
+.rating td{padding:22px 12px;border-bottom:1px solid var(--line);vertical-align:middle;font-size:14px}
+.rating tr{transition:background .25s}
+.rating tbody tr:hover{background:var(--paper)}
+.rating .rk{font-family:var(--serif);font-size:30px;color:var(--camel);width:70px}
+.rating .nm{font-family:var(--serif);font-size:22px}
+.rating .nm small{display:block;font-family:var(--sans);font-size:12px;color:var(--mute)}
+.bar{display:flex;align-items:center;gap:12px;min-width:150px}
+.bar .t{flex:1;height:1px;background:var(--line);position:relative}
+.bar .t i{position:absolute;left:0;top:-1px;height:3px;background:var(--ink)}
+.rating .tot{font-family:var(--serif);font-size:30px;text-align:right}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.legend h4{font-family:var(--serif);font-weight:400;font-size:22px;margin-bottom:6px}
+.legend p{font-size:14px;color:var(--ink-2)}
+
+/* destinations */
+.split{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,6vw,96px);align-items:center}
+.split .ph{aspect-ratio:3/4;overflow:hidden}
+.dest{list-style:none;border-top:1px solid var(--ink)}
+.dest li{display:grid;grid-template-columns:1fr auto auto;gap:32px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:padding .35s var(--ease)}
+.dest li:hover{padding-left:14px}
+.dest .c{font-family:var(--serif);font-size:clamp(28px,3vw,40px);font-weight:300}
+.dest .k{font-size:12px;color:var(--mute);letter-spacing:.06em}
+.dest .a{font-size:18px;color:var(--camel)}
+
+/* band */
+.band{position:relative;height:72vh;min-height:460px;color:#fff;overflow:hidden;padding:0}
+.band img{position:absolute;inset:0}
+.band::after{content:"";position:absolute;inset:0;background:rgba(29,26,22,.35)}
+.band .inner{position:relative;z-index:2;height:100%;display:flex;align-items:center;justify-content:center;text-align:center}
+.band blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(30px,4.2vw,60px);line-height:1.12;max-width:20ch}
+.band blockquote em{font-style:italic}
+
+/* cta */
+.cta{background:var(--sand)}
+.cta .box{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+.cta h2{font-family:var(--serif);font-weight:300;font-size:clamp(38px,5vw,76px);line-height:1}
+form.lead-form{display:grid;gap:24px}
+.field{display:flex;flex-direction:column;border-bottom:1px solid var(--ink)}
+.field span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.field input,.field select{border:0;background:transparent;padding:10px 0 12px;font-size:17px;outline:none;appearance:none}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.ok{font-family:var(--serif);font-size:24px;display:none}
+.lead-form.sent .ok{display:block}
+
+footer{padding:72px 0 40px;background:var(--ink);color:#CFC4B4}
+footer .top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid #3a342c}
+footer .brand{color:var(--ivory)}
+footer h5{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#8E8375;margin-bottom:16px}
+footer ul{list-style:none;display:grid;gap:10px;font-size:14px}
+footer a:hover{color:#fff}
+footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px;font-size:12px;color:#8E8375}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.hero .bg img{animation:none;transform:none}}
+:focus-visible{outline:1px solid var(--camel);outline-offset:3px}
+
+@media (max-width:1024px){
+  .menu{display:none}.burger{display:block}
+  .nav .btn{display:none}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .rating .hide-md{display:none}
+}
+@media (max-width:720px){
+  .head,.split,.cta .box{grid-template-columns:1fr}
+  .head p{justify-self:start}
+  .search{grid-template-columns:1fr}
+  .search label{border-right:0;border-bottom:1px solid var(--line)}
+  .search button{height:54px}
+  .principles{grid-template-columns:1fr}
+  .principles div,.principles div+div{padding:28px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .grid{grid-template-columns:1fr;gap:48px}
+  .sort{margin-left:0;width:100%;margin-top:8px}
+  .rating .hide-sm{display:none}
+  .rating .rk{width:40px;font-size:24px}
+  .legend{grid-template-columns:1fr;gap:20px}
+  .dest li{grid-template-columns:1fr auto;gap:12px}.dest .k{display:none}
+  .row{grid-template-columns:1fr}
+  footer .top{grid-template-columns:1fr 1fr}
+  footer .top>div:first-child{grid-column:1/-1}
+  footer .bot{flex-direction:column}
+  .brand{font-size:17px;letter-spacing:.26em}
+  .hero .search{margin-top:32px}
+}
+.drawer{position:fixed;inset:0;background:var(--ivory);z-index:60;display:none;flex-direction:column;padding:24px var(--pad)}
+.drawer.open{display:flex}
+.drawer nav{display:grid;gap:18px;margin-top:64px;font-family:var(--serif);font-size:38px;font-weight:300}
+.drawer .x{align-self:flex-end;background:none;border:0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#" class="brand" aria-label="Global Estate Chain — на главную">Global Estate<small>Chain · International</small></a>
+    <nav class="menu" aria-label="Основная навигация">
+      <a href="#objects">Объекты</a>
+      <a href="#rating">Рейтинг</a>
+      <a href="#destinations">Направления</a>
+      <a href="#method">Методология</a>
+    </nav>
+    <a href="#contact" class="btn">Подобрать объект</a>
+    <button class="burger" aria-label="Открыть меню" id="burger"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" role="dialog" aria-label="Меню">
+  <button class="x" id="close">Закрыть</button>
+  <nav>
+    <a href="#objects">Объекты</a><a href="#rating">Рейтинг</a><a href="#destinations">Направления</a><a href="#method">Методология</a><a href="#contact">Подобрать объект</a>
+  </nav>
+</div>
+
+<main>
+<section class="hero" aria-label="Главный экран">
+  <div class="bg"><img src="img/hero.webp" alt="Терраса пентхауса из травертина с видом на море на закате"></div>
+  <div class="wrap inner">
+    <p class="eyebrow">Международные новостройки · Отбор и рейтинг</p>
+    <h1>Недвижимость мира <em>с понятной</em> инвестиционной логикой</h1>
+    <p class="lead">Проверенные проекты в едином формате: цена, план оплаты, срок сдачи, застройщик, риски и сценарии выхода.</p>
+    <form class="search" id="search" role="search">
+      <label><span>Направление</span>
+        <select id="s-country"><option value="all">Все страны</option><option>ОАЭ</option><option>Индонезия</option><option>Таиланд</option><option>Португалия</option><option>Кипр</option><option>Турция</option></select></label>
+      <label><span>Бюджет</span>
+        <select id="s-budget"><option value="0">Любой</option><option value="300000">до $300 000</option><option value="600000">до $600 000</option><option value="1000000">до $1 000 000</option></select></label>
+      <label><span>Сдача</span>
+        <select id="s-year"><option value="0">Любой срок</option><option value="2027">до 2027</option><option value="2028">до 2028</option></select></label>
+      <button type="submit">Найти</button>
+    </form>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2 class="serif">Не витрина.<br>Инструмент выбора.</h2>
+      <p>Мы собираем новостройки со всего мира, приводим их к единому стандарту и оцениваем глазами инвестора — чтобы решение принималось по данным, а не по рекламе.</p>
+    </div>
+    <div class="principles reveal">
+      <div><span class="n">01 — Отбор</span><h3>Проверенные проекты</h3><p>В каталог попадают объекты с прозрачным застройщиком, понятным юридическим статусом и реальными сроками.</p></div>
+      <div><span class="n">02 — Сравнение</span><h3>Единый формат данных</h3><p>Цена за метр, план оплаты, доходность и сроки — одинаково для Дубая, Бали и Лиссабона.</p></div>
+      <div><span class="n">03 — Взгляд инвестора</span><h3>Риски и сценарии</h3><p>Каждому объекту — оценка доходности, ликвидности и риска, а также сценарии выхода.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="listings" id="objects">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2 class="serif">Избранные объекты</h2>
+      <p>Подборка новостроек с наивысшей оценкой GEC Score. Индекс рассчитывается по трём независимым осям.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Фильтр по стране" id="chips">
+      <button class="chip" aria-pressed="true" data-c="all">Все</button>
+      <button class="chip" aria-pressed="false" data-c="ОАЭ">ОАЭ</button>
+      <button class="chip" aria-pressed="false" data-c="Индонезия">Бали</button>
+      <button class="chip" aria-pressed="false" data-c="Таиланд">Пхукет</button>
+      <button class="chip" aria-pressed="false" data-c="Португалия">Лиссабон</button>
+      <button class="chip" aria-pressed="false" data-c="Кипр">Лимасол</button>
+      <button class="chip" aria-pressed="false" data-c="Турция">Стамбул</button>
+      <label class="sort">Сортировка
+        <select id="sort"><option value="score">По рейтингу</option><option value="price">По цене</option><option value="yield">По доходности</option></select>
+      </label>
+    </div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+    <p class="note">Демонстрационные карточки: названия, цены и показатели приведены для примера оформления и не являются офертой.</p>
+  </div>
+</section>
+
+<section class="rating" id="rating">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2 class="serif">Рейтинг новостроек</h2>
+      <p>GEC Score — от 0 до 10. Доходность, ликвидность и надёжность оцениваются раздельно, поэтому сильный объект не прячет слабые стороны за средним баллом.</p>
+    </div>
+    <div class="reveal">
+    <table>
+      <thead><tr><th>№</th><th>Проект</th><th class="hide-sm">Доходность</th><th class="hide-sm">Ликвидность</th><th class="hide-md hide-sm">Надёжность</th><th style="text-align:right">Score</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    </div>
+    <div class="legend reveal">
+      <div><h4>Доходность</h4><p>Арендный доход и прогноз роста цены к сдаче с учётом расходов на владение.</p></div>
+      <div><h4>Ликвидность</h4><p>Спрос на вторичном рынке, скорость перепродажи и глубина арендного рынка района.</p></div>
+      <div><h4>Надёжность</h4><p>История застройщика, эскроу и правовой статус, валютные и регуляторные риски.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="Цитата">
+  <img src="img/p-istanbul.webp" alt="Интерьер апартаментов с видом на Босфор" loading="lazy">
+  <div class="wrap inner"><blockquote>Тишина цифр <em>вместо</em> шума рекламы</blockquote></div>
+</section>
+
+<section id="destinations">
+  <div class="wrap split">
+    <div class="ph reveal"><img src="img/interior.webp" alt="Пальто цвета кэмел на скамье из травертина" loading="lazy"></div>
+    <div class="reveal">
+      <p class="eyebrow" style="margin-bottom:20px">Направления</p>
+      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">Шесть рынков,<br>один стандарт</h2>
+      <ul class="dest" id="dest">
+        <li data-c="ОАЭ"><span class="c">Дубай</span><span class="k">Без налога на доход · план оплаты</span><span class="a">→</span></li>
+        <li data-c="Индонезия"><span class="c">Бали</span><span class="k">Курортная аренда · leasehold</span><span class="a">→</span></li>
+        <li data-c="Таиланд"><span class="c">Пхукет</span><span class="k">Кондо-квота для иностранцев</span><span class="a">→</span></li>
+        <li data-c="Португалия"><span class="c">Лиссабон</span><span class="k">Европейский рынок · вторичка</span><span class="a">→</span></li>
+        <li data-c="Кипр"><span class="c">Лимасол</span><span class="k">Средиземноморье · ЕС</span><span class="a">→</span></li>
+        <li data-c="Турция"><span class="c">Стамбул</span><span class="k">Крупнейший рынок региона</span><span class="a">→</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="method" style="padding-top:0">
+  <div class="wrap">
+    <hr class="rule" style="margin-bottom:clamp(80px,11vw,160px)">
+    <div class="head reveal" style="margin-bottom:0">
+      <h2 class="serif">Методология</h2>
+      <p>Каждая карточка проходит проверку застройщика, документов и условий сделки. В заметках эксперта — сильные стороны, риски и реалистичные сценарии выхода: аренда, перепродажа до сдачи или после.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap box">
+    <div class="reveal">
+      <p class="eyebrow" style="margin-bottom:20px">Персональная подборка</p>
+      <h2>Хотите попасть в первые подборки?</h2>
+    </div>
+    <form class="lead-form reveal" id="lead" novalidate>
+      <div class="row">
+        <label class="field"><span>Имя</span><input name="name" required autocomplete="name"></label>
+        <label class="field"><span>Email или Telegram</span><input name="contact" required></label>
+      </div>
+      <div class="row">
+        <label class="field"><span>Цель</span><select name="goal"><option>Арендный доход</option><option>Рост капитала</option><option>Релокация</option></select></label>
+        <label class="field"><span>Бюджет</span><select name="budget"><option>до $300 000</option><option>$300 000 – 600 000</option><option>от $600 000</option></select></label>
+      </div>
+      <div><button class="btn fill" type="submit">Отправить заявку</button></div>
+      <p class="ok" role="status">Спасибо. Мы свяжемся с вами, когда подборка будет готова.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div><div class="brand">Global Estate<small>Chain · International</small></div><p style="margin-top:22px;max-width:34ch;font-size:14px">Каталог международных новостроек для инвестиций с независимым рейтингом.</p></div>
+      <div><h5>Каталог</h5><ul><li><a href="#objects">Объекты</a></li><li><a href="#rating">Рейтинг</a></li><li><a href="#destinations">Направления</a></li></ul></div>
+      <div><h5>Портал</h5><ul><li><a href="#about">О проекте</a></li><li><a href="#method">Методология</a></li><li><a href="#contact">Заявка</a></li></ul></div>
+      <div><h5>Контакты</h5><ul><li><a href="http://globalestatechain.com">globalestatechain.com</a></li><li>Дубай, ОАЭ</li></ul></div>
+    </div>
+    <div class="bot"><span>© 2026 Global Estate Chain</span><span>Информация на сайте не является инвестиционной рекомендацией.</span></div>
+  </div>
+</footer>
+
+<script>
+const data=[
+ {id:1,name:"Sable Residences",city:"Дубай",country:"ОАЭ",img:"p-dubai",price:420000,yield:7.2,year:2027,plan:"60/40",y:8.6,l:9.1,r:8.4},
+ {id:2,name:"Travertine Villas",city:"Бали, Чангу",country:"Индонезия",img:"p-bali",price:285000,yield:9.8,year:2027,plan:"30/70",y:9.3,l:7.2,r:6.9},
+ {id:3,name:"Casa Alfama",city:"Лиссабон",country:"Португалия",img:"p-lisbon",price:640000,yield:4.6,year:2028,plan:"20/80",y:6.8,l:8.7,r:9.2},
+ {id:4,name:"Kamala Hillside",city:"Пхукет",country:"Таиланд",img:"p-phuket",price:310000,yield:8.1,year:2026,plan:"35/65",y:8.4,l:7.6,r:7.4},
+ {id:5,name:"Ivory Shore",city:"Лимасол",country:"Кипр",img:"p-limassol",price:780000,yield:5.4,year:2028,plan:"10/90",y:7.1,l:8.2,r:8.8},
+ {id:6,name:"Bosphorus Line",city:"Стамбул",country:"Турция",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0}
+];
+const score=o=>+((o.y*.4+o.l*.3+o.r*.3).toFixed(1));
+data.forEach(o=>o.s=score(o));
+const fmt=n=>"$ "+n.toLocaleString("ru-RU");
+let state={c:"all",budget:0,year:0,sort:"score"};
+const grid=document.getElementById("grid");
+const favs=new Set();
+function render(){
+  let list=data.filter(o=>(state.c==="all"||o.country===state.c)&&(!state.budget||o.price<=state.budget)&&(!state.year||o.year<=state.year));
+  list.sort((a,b)=>state.sort==="price"?a.price-b.price:state.sort==="yield"?b.yield-a.yield:b.s-a.s);
+  grid.innerHTML=list.length?list.map(o=>`
+   <article class="card" tabindex="0" aria-label="${o.name}, ${o.city}">
+     <div class="ph"><img src="img/${o.img}.webp" alt="${o.name} — ${o.city}" loading="lazy">
+       <div class="score"><b>${o.s.toFixed(1)}</b><i>GEC Score</i></div>
+       <button class="fav" aria-label="В избранное" aria-pressed="${favs.has(o.id)}" data-id="${o.id}"><svg width="14" height="14" viewBox="0 0 24 24" fill="${favs.has(o.id)?'currentColor':'none'}" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7.5-4.6-9.5-9.2C1 8.2 3.4 4.5 7 4.5c2 0 3.6 1.2 5 3 1.4-1.8 3-3 5-3 3.6 0 6 3.7 4.5 7.3C19.5 16.4 12 21 12 21z"/></svg></button>
+     </div>
+     <div class="meta"><span class="eyebrow">${o.city} · ${o.country}</span><span class="eyebrow">Сдача ${o.year}</span></div>
+     <h3>${o.name}</h3>
+     <dl class="facts"><div><dt>Доходность</dt><dd>${o.yield.toFixed(1).replace(".",",")}%</dd></div><div><dt>План оплаты</dt><dd>${o.plan}</dd></div><div><dt>Риск</dt><dd>${o.r>=8.5?"Низкий":o.r>=7.3?"Умеренный":"Повышенный"}</dd></div></dl>
+     <p class="price"><span>от</span>${fmt(o.price)}</p>
+   </article>`).join(""):`<p class="empty">По этим параметрам объектов пока нет</p>`;
+}
+function renderTable(){
+  const t=[...data].sort((a,b)=>b.s-a.s);
+  const bar=v=>`<div class="bar"><div class="t"><i style="width:${v*10}%"></i></div><span>${v.toFixed(1)}</span></div>`;
+  document.getElementById("tbody").innerHTML=t.map((o,i)=>`<tr><td class="rk">${String(i+1).padStart(2,"0")}</td><td class="nm">${o.name}<small>${o.city}, ${o.country}</small></td><td class="hide-sm">${bar(o.y)}</td><td class="hide-sm">${bar(o.l)}</td><td class="hide-md hide-sm">${bar(o.r)}</td><td class="tot">${o.s.toFixed(1)}</td></tr>`).join("");
+}
+function setCountry(c){
+  state.c=c;
+  document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===c));
+  render();
+}
+document.getElementById("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b)setCountry(b.dataset.c)});
+document.getElementById("sort").addEventListener("change",e=>{state.sort=e.target.value;render()});
+grid.addEventListener("click",e=>{const f=e.target.closest(".fav");if(!f)return;e.stopPropagation();const id=+f.dataset.id;favs.has(id)?favs.delete(id):favs.add(id);render()});
+document.getElementById("search").addEventListener("submit",e=>{e.preventDefault();
+  state.budget=+document.getElementById("s-budget").value;state.year=+document.getElementById("s-year").value;
+  setCountry(document.getElementById("s-country").value);
+  document.getElementById("objects").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("dest").addEventListener("click",e=>{const li=e.target.closest("li");if(!li)return;state.budget=0;state.year=0;setCountry(li.dataset.c);document.getElementById("objects").scrollIntoView({behavior:"smooth"})});
+document.getElementById("lead").addEventListener("submit",e=>{e.preventDefault();const f=e.target;if(!f.name.value.trim()||!f.contact.value.trim()){(f.name.value.trim()?f.contact:f.name).focus();return}f.classList.add("sent");f.querySelector("button").disabled=true});
+const hdr=document.getElementById("hdr");
+const onScroll=()=>hdr.classList.toggle("solid",scrollY>window.innerHeight*.7);
+addEventListener("scroll",onScroll,{passive:true});onScroll();
+const dr=document.getElementById("drawer");
+document.getElementById("burger").onclick=()=>dr.classList.add("open");
+document.getElementById("close").onclick=()=>dr.classList.remove("open");
+dr.querySelectorAll("a").forEach(a=>a.onclick=()=>dr.classList.remove("open"));
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+render();renderTable();
+</script>
+</body>
+</html>
