@@ -238,7 +238,9 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
   .signin.hd{display:none}
   .acct .perks{display:none}
   .acct{padding-top:calc(76px + 40px)}
-  .act .lang{display:none}
+  .act{gap:18px}
+  .act .lang{gap:8px;font-size:11px}
+  .act .lang a{opacity:.75}
   .head,.split,.cta .box{grid-template-columns:1fr}
   .head p{justify-self:start}
   .search{grid-template-columns:1fr}
@@ -265,6 +267,8 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 .drawer.open{display:flex}
 .drawer nav{display:grid;gap:18px;margin-top:64px;font-family:var(--serif);font-size:38px;font-weight:300}
 .drawer .x{align-self:flex-end;background:none;border:0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+@media (max-width:380px){.brand small{display:none}.brand{font-size:15px;letter-spacing:.2em}.brand .mark{width:28px;height:28px}.act{gap:14px}}
+@media (max-width:340px){.brand{font-size:13px;letter-spacing:.14em;gap:8px}}
 </style>
 </head>
 <body>
