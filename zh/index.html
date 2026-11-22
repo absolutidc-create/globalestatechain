@@ -292,6 +292,31 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
 .drawer .lang-list{flex-wrap:wrap;gap:12px 20px;text-transform:none;letter-spacing:.06em}
 
+.dmap-wrap{margin:0 calc(var(--pad)*-1);padding:0 var(--pad);overflow-x:auto;scrollbar-width:none}
+.dmap-wrap::-webkit-scrollbar{display:none}
+.dmap{position:relative;direction:ltr;aspect-ratio:2/1;min-width:760px;background:var(--paper);border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.dmap>img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pin{position:absolute;left:var(--x);top:var(--y);width:22px;height:22px;margin:-11px 0 0 -11px;border:0;background:none;padding:0;cursor:pointer;color:var(--ink);font:inherit}
+.pin i{position:absolute;left:6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--camel);box-shadow:0 0 0 4px rgba(168,123,79,.16);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.pin .lb{position:absolute;white-space:nowrap;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left}
+.pin .lb>span{unicode-bidi:plaintext}
+.pin .c{font-family:var(--serif);font-size:clamp(17px,1.6vw,22px);font-weight:400;line-height:1}
+.pin .k{font-size:10.5px;letter-spacing:.04em;color:var(--mute);opacity:0;transform:translateY(-3px);transition:opacity .3s,transform .3s var(--ease);background:var(--paper);padding:2px 0}
+.pin.r .lb{left:22px;top:1px}.pin.l .lb{right:22px;top:1px;align-items:flex-end;text-align:right}
+.pin.t .lb{bottom:20px;left:50%;transform:translateX(-50%);align-items:center;text-align:center}.pin.t .k{order:-1}
+.pin:hover i,.pin:focus-visible i,.pin.hl i{transform:scale(1.35);box-shadow:0 0 0 9px rgba(168,123,79,.18)}
+.pin:hover .k,.pin:focus-visible .k,.pin.hl .k{opacity:1;transform:none}
+.pin:hover,.pin.hl{z-index:3}.pin:focus-visible{outline:none}.pin:focus-visible .c{text-decoration:underline;text-underline-offset:4px}
+.dest-legend{display:grid;grid-template-columns:repeat(3,1fr);column-gap:clamp(24px,4vw,64px);margin-top:8px;border-top:0}
+.dest-legend li{grid-template-columns:1fr auto;gap:4px 16px;padding:18px 0}
+.dest-legend .c{font-size:clamp(22px,2vw,28px)}
+.dest-legend .k{grid-column:1;grid-row:2;font-size:11.5px}
+.dest-legend .a{grid-row:1/3;align-self:center}
+.dest-legend li.hl .c{color:var(--camel-deep)}
+@media (max-width:1024px){.dest-legend{grid-template-columns:repeat(2,1fr)}}
+.dmap-hint{display:none;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:12px}
+@media (max-width:720px){.dest-legend{grid-template-columns:1fr}.dest-legend .k{display:block}.dmap-hint{display:block}}
+
 html[lang=zh] .hero h1,html[lang=zh] .head h2{letter-spacing:.02em;line-height:1.18}html[lang=zh] em,html[lang=zh] i{font-style:normal}
 </style>
 </head>
@@ -410,23 +435,36 @@ html[lang=zh] .hero h1,html[lang=zh] .head h2{letter-spacing:.02em;line-height:1
 </section>
 
 <section id="destinations">
-  <div class="wrap split">
-    <div class="ph reveal"><img src="../img/interior.webp" alt="洞石长凳上的驼色大衣" loading="lazy"></div>
-    <div class="reveal">
-      <p class="eyebrow" style="margin-bottom:20px">目的地</p>
-      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">九个市场，<br>一个标准</h2>
-      <ul class="dest" id="dest">
-        <li data-c="ОАЭ"><span class="c">迪拜</span><span class="k">免个人所得税 · 分期付款</span><span class="a">→</span></li>
-        <li data-c="Индонезия"><span class="c">巴厘岛</span><span class="k">度假租赁 · 租赁产权</span><span class="a">→</span></li>
-        <li data-c="Таиланд"><span class="c">普吉岛</span><span class="k">外国人公寓配额</span><span class="a">→</span></li>
-        <li data-c="Португалия"><span class="c">里斯本</span><span class="k">欧洲市场 · 二手交易</span><span class="a">→</span></li>
-        <li data-c="Кипр"><span class="c">利马索尔</span><span class="k">地中海 · 欧盟</span><span class="a">→</span></li>
-        <li data-c="Турция"><span class="c">伊斯坦布尔</span><span class="k">区域最大市场</span><span class="a">→</span></li>
-        <li data-c="Грузия"><span class="c">巴统</span><span class="k">入门门槛低 · 黑海度假胜地</span><span class="a">→</span></li>
-        <li data-c="Черногория"><span class="c">布德瓦</span><span class="k">亚得里亚海岸 · 欧元结算</span><span class="a">→</span></li>
-        <li data-c="Северный Кипр"><span class="c">凯里尼亚</span><span class="k">入门门槛低 · 需核查产权</span><span class="a">→</span></li>
-      </ul>
+  <div class="wrap">
+    <div class="head reveal">
+      <div><p class="eyebrow" style="margin-bottom:20px">目的地</p>
+      <h2 class="serif">九个市场，<br>一个标准</h2></div>
+      <p>在地图上选择城市，查看当地已评级的新房项目。</p>
     </div>
+    <div class="dmap-wrap reveal"><div class="dmap" id="dmap" role="group" aria-label="目的地地图">
+      <img src="../img/map.svg" alt="" aria-hidden="true" loading="lazy">
+      <button class="pin r" type="button" data-c="Португалия" style="--x:9.26%;--y:24.95%"><i></i><span class="lb"><span class="c">里斯本</span><span class="k">欧洲市场 · 二手交易</span></span></button>
+      <button class="pin t" type="button" data-c="Черногория" style="--x:27.6%;--y:18.8%"><i></i><span class="lb"><span class="c">布德瓦</span><span class="k">亚得里亚海岸 · 欧元结算</span></span></button>
+      <button class="pin t" type="button" data-c="Турция" style="--x:34.25%;--y:21.04%"><i></i><span class="lb"><span class="c">伊斯坦布尔</span><span class="k">区域最大市场</span></span></button>
+      <button class="pin r" type="button" data-c="Грузия" style="--x:42.55%;--y:19.92%"><i></i><span class="lb"><span class="c">巴统</span><span class="k">入门门槛低 · 黑海度假胜地</span></span></button>
+      <button class="pin l" type="button" data-c="Кипр" style="--x:36.91%;--y:33.16%"><i></i><span class="lb"><span class="c">利马索尔</span><span class="k">地中海 · 欧盟</span></span></button>
+      <button class="pin r" type="button" data-c="Северный Кипр" style="--x:37.1%;--y:28.91%"><i></i><span class="lb"><span class="c">凯里尼亚</span><span class="k">入门门槛低 · 需核查产权</span></span></button>
+      <button class="pin r" type="button" data-c="ОАЭ" style="--x:51.49%;--y:45.94%"><i></i><span class="lb"><span class="c">迪拜</span><span class="k">免个人所得税 · 分期付款</span></span></button>
+      <button class="pin l" type="button" data-c="Таиланд" style="--x:79.7%;--y:69.74%"><i></i><span class="lb"><span class="c">普吉岛</span><span class="k">外国人公寓配额</span></span></button>
+      <button class="pin l" type="button" data-c="Индонезия" style="--x:90.76%;--y:91.49%"><i></i><span class="lb"><span class="c">巴厘岛</span><span class="k">度假租赁 · 租赁产权</span></span></button>
+    </div></div>
+    <p class="dmap-hint">左右滑动查看地图</p>
+    <ul class="dest dest-legend" id="dest">
+      <li data-c="Португалия"><span class="c">里斯本</span><span class="k">欧洲市场 · 二手交易</span><span class="a">→</span></li>
+      <li data-c="Черногория"><span class="c">布德瓦</span><span class="k">亚得里亚海岸 · 欧元结算</span><span class="a">→</span></li>
+      <li data-c="Турция"><span class="c">伊斯坦布尔</span><span class="k">区域最大市场</span><span class="a">→</span></li>
+      <li data-c="Грузия"><span class="c">巴统</span><span class="k">入门门槛低 · 黑海度假胜地</span><span class="a">→</span></li>
+      <li data-c="Кипр"><span class="c">利马索尔</span><span class="k">地中海 · 欧盟</span><span class="a">→</span></li>
+      <li data-c="Северный Кипр"><span class="c">凯里尼亚</span><span class="k">入门门槛低 · 需核查产权</span><span class="a">→</span></li>
+      <li data-c="ОАЭ"><span class="c">迪拜</span><span class="k">免个人所得税 · 分期付款</span><span class="a">→</span></li>
+      <li data-c="Таиланд"><span class="c">普吉岛</span><span class="k">外国人公寓配额</span><span class="a">→</span></li>
+      <li data-c="Индонезия"><span class="c">巴厘岛</span><span class="k">度假租赁 · 租赁产权</span><span class="a">→</span></li>
+    </ul>
   </div>
 </section>
 
@@ -548,6 +586,11 @@ document.getElementById("search").addEventListener("submit",e=>{e.preventDefault
   setCountry(document.getElementById("s-country").value,document.getElementById("s-city").value);
   document.getElementById("objects").scrollIntoView({behavior:"smooth"});
 });
+const dm=document.getElementById("dmap"),dl=document.getElementById("dest");
+dm.addEventListener("click",e=>{const b=e.target.closest(".pin");if(!b)return;state.budget=0;state.year=0;setCountry(b.dataset.c);document.getElementById("objects").scrollIntoView({behavior:"smooth"})});
+const hl=(c,on)=>{dm.querySelectorAll(".pin").forEach(p=>p.classList.toggle("hl",on&&p.dataset.c===c));dl.querySelectorAll("li").forEach(l=>l.classList.toggle("hl",on&&l.dataset.c===c))};
+dl.addEventListener("mouseover",e=>{const li=e.target.closest("li");if(li)hl(li.dataset.c,true)});dl.addEventListener("mouseleave",()=>hl("",false));
+dm.addEventListener("mouseover",e=>{const b=e.target.closest(".pin");hl(b?b.dataset.c:"",!!b)});dm.addEventListener("mouseleave",()=>hl("",false));
 document.getElementById("dest").addEventListener("click",e=>{const li=e.target.closest("li");if(!li)return;state.budget=0;state.year=0;setCountry(li.dataset.c);document.getElementById("objects").scrollIntoView({behavior:"smooth"})});
 document.getElementById("lead").addEventListener("submit",e=>{e.preventDefault();const f=e.target;if(!f.name.value.trim()||!f.contact.value.trim()){(f.name.value.trim()?f.contact:f.name).focus();return}f.classList.add("sent");f.querySelector("button").disabled=true});
 const hdr=document.getElementById("hdr");
