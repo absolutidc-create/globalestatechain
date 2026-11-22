@@ -280,8 +280,6 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 @media (max-width:380px){.brand small{display:none}.brand{font-size:15px;letter-spacing:.2em}.brand .mark{width:28px;height:28px}.act{gap:14px}}
 @media (max-width:340px){.brand{font-size:13px;letter-spacing:.14em;gap:8px}}
 
-html[lang=zh] .hero h1,html[lang=zh] .head h2{letter-spacing:.02em;line-height:1.18}html[lang=zh] em,html[lang=zh] i{font-style:normal}
-
 .lang-dd{position:relative;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
 .lang-dd summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;padding:4px 0;border-bottom:1px solid currentColor}
 .lang-dd summary::-webkit-details-marker{display:none}
@@ -293,6 +291,8 @@ html[lang=zh] .hero h1,html[lang=zh] .head h2{letter-spacing:.02em;line-height:1
 .lang-dd li a[aria-current]::after{content:" ·"}
 h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
 .drawer .lang-list{flex-wrap:wrap;gap:12px 20px;text-transform:none;letter-spacing:.06em}
+
+html[lang=zh] .hero h1,html[lang=zh] .head h2{letter-spacing:.02em;line-height:1.18}html[lang=zh] em,html[lang=zh] i{font-style:normal}
 </style>
 </head>
 <body>
@@ -332,7 +332,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
     <p class="lead">经过核验的项目，统一呈现：价格、付款计划、交付时间、开发商、风险与退出方案。</p>
     <form class="search" id="search" role="search">
       <label><span>国家</span>
-        <select id="s-country"><option value="all">所有国家</option><option value="ОАЭ">阿联酋</option><option value="Индонезия">印度尼西亚</option><option value="Таиланд">泰国</option><option value="Португалия">葡萄牙</option><option value="Кипр">塞浦路斯</option><option value="Турция">土耳其</option></select></label>
+        <select id="s-country"><option value="all">所有国家</option><option value="ОАЭ">阿联酋</option><option value="Индонезия">印度尼西亚</option><option value="Таиланд">泰国</option><option value="Португалия">葡萄牙</option><option value="Кипр">塞浦路斯</option><option value="Турция">土耳其</option><option value="Грузия">格鲁吉亚</option></select></label>
       <label><span>城市</span>
         <select id="s-city"><option value="all">所有城市</option></select></label>
       <label><span>预算</span>
@@ -372,6 +372,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
       <button class="chip" aria-pressed="false" data-c="Португалия">里斯本</button>
       <button class="chip" aria-pressed="false" data-c="Кипр">利马索尔</button>
       <button class="chip" aria-pressed="false" data-c="Турция">伊斯坦布尔</button>
+      <button class="chip" aria-pressed="false" data-c="Грузия">巴统</button>
       <label class="sort">排序
         <select id="sort"><option value="score">评级</option><option value="price">价格</option><option value="yield">收益率</option></select>
       </label>
@@ -411,7 +412,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
     <div class="ph reveal"><img src="../img/interior.webp" alt="洞石长凳上的驼色大衣" loading="lazy"></div>
     <div class="reveal">
       <p class="eyebrow" style="margin-bottom:20px">目的地</p>
-      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">六个市场，<br>一个标准</h2>
+      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">七个市场，<br>一个标准</h2>
       <ul class="dest" id="dest">
         <li data-c="ОАЭ"><span class="c">迪拜</span><span class="k">免个人所得税 · 分期付款</span><span class="a">→</span></li>
         <li data-c="Индонезия"><span class="c">巴厘岛</span><span class="k">度假租赁 · 租赁产权</span><span class="a">→</span></li>
@@ -419,6 +420,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
         <li data-c="Португалия"><span class="c">里斯本</span><span class="k">欧洲市场 · 二手交易</span><span class="a">→</span></li>
         <li data-c="Кипр"><span class="c">利马索尔</span><span class="k">地中海 · 欧盟</span><span class="a">→</span></li>
         <li data-c="Турция"><span class="c">伊斯坦布尔</span><span class="k">区域最大市场</span><span class="a">→</span></li>
+        <li data-c="Грузия"><span class="c">巴统</span><span class="k">入门门槛低 · 黑海度假胜地</span><span class="a">→</span></li>
       </ul>
     </div>
   </div>
@@ -490,7 +492,8 @@ const data=[
  {id:3,name:"Casa Alfama",city:"里斯本",country:"Португалия",cn:"葡萄牙",img:"p-lisbon",price:640000,yield:4.6,year:2028,plan:"20/80",y:6.8,l:8.7,r:9.2},
  {id:4,name:"Kamala Hillside",city:"普吉岛",country:"Таиланд",cn:"泰国",img:"p-phuket",price:310000,yield:8.1,year:2026,plan:"35/65",y:8.4,l:7.6,r:7.4},
  {id:5,name:"Ivory Shore",city:"利马索尔",country:"Кипр",cn:"塞浦路斯",img:"p-limassol",price:780000,yield:5.4,year:2028,plan:"10/90",y:7.1,l:8.2,r:8.8},
- {id:6,name:"Bosphorus Line",city:"伊斯坦布尔",country:"Турция",cn:"土耳其",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0}
+ {id:6,name:"Bosphorus Line",city:"伊斯坦布尔",country:"Турция",cn:"土耳其",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0},
+ {id:7,name:"Black Sea Crown",city:"巴统",country:"Грузия",cn:"格鲁吉亚",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8}
 ];
 const score=o=>+((o.y*.4+o.l*.3+o.r*.3).toFixed(1));
 data.forEach(o=>o.s=score(o));

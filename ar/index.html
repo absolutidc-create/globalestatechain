@@ -280,6 +280,18 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 @media (max-width:380px){.brand small{display:none}.brand{font-size:15px;letter-spacing:.2em}.brand .mark{width:28px;height:28px}.act{gap:14px}}
 @media (max-width:340px){.brand{font-size:13px;letter-spacing:.14em;gap:8px}}
 
+.lang-dd{position:relative;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.lang-dd summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;padding:4px 0;border-bottom:1px solid currentColor}
+.lang-dd summary::-webkit-details-marker{display:none}
+.lang-dd[open] summary svg{transform:rotate(180deg)}
+.lang-dd ul{list-style:none;position:absolute;top:calc(100% + 14px);inset-inline-end:-18px;min-width:168px;background:var(--paper);color:var(--ink);border:1px solid var(--line);padding:8px 0;margin:0;box-shadow:0 18px 40px -24px rgba(29,26,22,.35);z-index:70;letter-spacing:.08em;text-transform:none;font-size:13px}
+.lang-dd li a{display:block;padding:9px 20px;opacity:1;transition:background .2s}
+.lang-dd li a:hover{background:var(--sand)}
+.lang-dd li a[aria-current]{color:var(--camel-deep)}
+.lang-dd li a[aria-current]::after{content:" ·"}
+h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
+.drawer .lang-list{flex-wrap:wrap;gap:12px 20px;text-transform:none;letter-spacing:.06em}
+
 html[dir=rtl] *:not(.brand):not(.brand *){letter-spacing:0!important}
 html[dir=rtl] body{font-size:16px}
 html[dir=rtl] .rating th,html[dir=rtl] .rating td{text-align:right}
@@ -299,18 +311,6 @@ html[dir=rtl] .bar .t i{left:auto;right:0}
 html[dir=rtl] .dest li:hover{padding-left:0;padding-right:14px}
 @media (max-width:1024px){html[dir=rtl] .search label:nth-child(2n){border-left:0}}
 @media (max-width:720px){html[dir=rtl] .search label{border-left:0}html[dir=rtl] .roles .cards>div+div,html[dir=rtl] .principles div+div{padding:28px 0;border-right:0}}
-
-.lang-dd{position:relative;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
-.lang-dd summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;padding:4px 0;border-bottom:1px solid currentColor}
-.lang-dd summary::-webkit-details-marker{display:none}
-.lang-dd[open] summary svg{transform:rotate(180deg)}
-.lang-dd ul{list-style:none;position:absolute;top:calc(100% + 14px);inset-inline-end:-18px;min-width:168px;background:var(--paper);color:var(--ink);border:1px solid var(--line);padding:8px 0;margin:0;box-shadow:0 18px 40px -24px rgba(29,26,22,.35);z-index:70;letter-spacing:.08em;text-transform:none;font-size:13px}
-.lang-dd li a{display:block;padding:9px 20px;opacity:1;transition:background .2s}
-.lang-dd li a:hover{background:var(--sand)}
-.lang-dd li a[aria-current]{color:var(--camel-deep)}
-.lang-dd li a[aria-current]::after{content:" ·"}
-h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
-.drawer .lang-list{flex-wrap:wrap;gap:12px 20px;text-transform:none;letter-spacing:.06em}
 </style>
 </head>
 <body>
@@ -350,7 +350,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
     <p class="lead">مشاريع موثّقة بصيغة واحدة: السعر، خطة الدفع، موعد التسليم، المطوّر، المخاطر وسيناريوهات الخروج.</p>
     <form class="search" id="search" role="search">
       <label><span>الدولة</span>
-        <select id="s-country"><option value="all">جميع الدول</option><option value="ОАЭ">الإمارات</option><option value="Индонезия">إندونيسيا</option><option value="Таиланд">تايلاند</option><option value="Португалия">البرتغال</option><option value="Кипр">قبرص</option><option value="Турция">تركيا</option></select></label>
+        <select id="s-country"><option value="all">جميع الدول</option><option value="ОАЭ">الإمارات</option><option value="Индонезия">إندونيسيا</option><option value="Таиланд">تايلاند</option><option value="Португалия">البرتغال</option><option value="Кипр">قبرص</option><option value="Турция">تركيا</option><option value="Грузия">جورجيا</option></select></label>
       <label><span>المدينة</span>
         <select id="s-city"><option value="all">جميع المدن</option></select></label>
       <label><span>الميزانية</span>
@@ -390,6 +390,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
       <button class="chip" aria-pressed="false" data-c="Португалия">لشبونة</button>
       <button class="chip" aria-pressed="false" data-c="Кипр">ليماسول</button>
       <button class="chip" aria-pressed="false" data-c="Турция">إسطنبول</button>
+      <button class="chip" aria-pressed="false" data-c="Грузия">باتومي</button>
       <label class="sort">ترتيب حسب
         <select id="sort"><option value="score">التصنيف</option><option value="price">السعر</option><option value="yield">العائد</option></select>
       </label>
@@ -429,7 +430,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
     <div class="ph reveal"><img src="../img/interior.webp" alt="معطف بلون الجمل على مقعد من الترافرتين" loading="lazy"></div>
     <div class="reveal">
       <p class="eyebrow" style="margin-bottom:20px">الوجهات</p>
-      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">ستة أسواق،<br>معيار واحد</h2>
+      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">سبعة أسواق،<br>معيار واحد</h2>
       <ul class="dest" id="dest">
         <li data-c="ОАЭ"><span class="c">دبي</span><span class="k">بلا ضريبة دخل · خطط دفع</span><span class="a">←</span></li>
         <li data-c="Индонезия"><span class="c">بالي</span><span class="k">إيجارات سياحية · حق انتفاع</span><span class="a">←</span></li>
@@ -437,6 +438,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
         <li data-c="Португалия"><span class="c">لشبونة</span><span class="k">سوق أوروبية · إعادة بيع</span><span class="a">←</span></li>
         <li data-c="Кипр"><span class="c">ليماسول</span><span class="k">المتوسط · الاتحاد الأوروبي</span><span class="a">←</span></li>
         <li data-c="Турция"><span class="c">إسطنبول</span><span class="k">أكبر سوق في المنطقة</span><span class="a">←</span></li>
+        <li data-c="Грузия"><span class="c">باتومي</span><span class="k">سعر دخول منخفض · منتجع البحر الأسود</span><span class="a">←</span></li>
       </ul>
     </div>
   </div>
@@ -508,7 +510,8 @@ const data=[
  {id:3,name:"Casa Alfama",city:"لشبونة",country:"Португалия",cn:"البرتغال",img:"p-lisbon",price:640000,yield:4.6,year:2028,plan:"20/80",y:6.8,l:8.7,r:9.2},
  {id:4,name:"Kamala Hillside",city:"بوكيت",country:"Таиланд",cn:"تايلاند",img:"p-phuket",price:310000,yield:8.1,year:2026,plan:"35/65",y:8.4,l:7.6,r:7.4},
  {id:5,name:"Ivory Shore",city:"ليماسول",country:"Кипр",cn:"قبرص",img:"p-limassol",price:780000,yield:5.4,year:2028,plan:"10/90",y:7.1,l:8.2,r:8.8},
- {id:6,name:"Bosphorus Line",city:"إسطنبول",country:"Турция",cn:"تركيا",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0}
+ {id:6,name:"Bosphorus Line",city:"إسطنبول",country:"Турция",cn:"تركيا",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0},
+ {id:7,name:"Black Sea Crown",city:"باتومي",country:"Грузия",cn:"جورجيا",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8}
 ];
 const score=o=>+((o.y*.4+o.l*.3+o.r*.3).toFixed(1));
 data.forEach(o=>o.s=score(o));

@@ -330,7 +330,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
     <p class="lead">Des projets vérifiés dans un format unique : prix, plan de paiement, livraison, promoteur, risques et scénarios de sortie.</p>
     <form class="search" id="search" role="search">
       <label><span>Pays</span>
-        <select id="s-country"><option value="all">Tous les pays</option><option value="ОАЭ">EAU</option><option value="Индонезия">Indonésie</option><option value="Таиланд">Thaïlande</option><option value="Португалия">Portugal</option><option value="Кипр">Chypre</option><option value="Турция">Turquie</option></select></label>
+        <select id="s-country"><option value="all">Tous les pays</option><option value="ОАЭ">EAU</option><option value="Индонезия">Indonésie</option><option value="Таиланд">Thaïlande</option><option value="Португалия">Portugal</option><option value="Кипр">Chypre</option><option value="Турция">Turquie</option><option value="Грузия">Géorgie</option></select></label>
       <label><span>Ville</span>
         <select id="s-city"><option value="all">Toutes les villes</option></select></label>
       <label><span>Budget</span>
@@ -370,6 +370,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
       <button class="chip" aria-pressed="false" data-c="Португалия">Lisbonne</button>
       <button class="chip" aria-pressed="false" data-c="Кипр">Limassol</button>
       <button class="chip" aria-pressed="false" data-c="Турция">Istanbul</button>
+      <button class="chip" aria-pressed="false" data-c="Грузия">Batoumi</button>
       <label class="sort">Trier par
         <select id="sort"><option value="score">Classement</option><option value="price">Prix</option><option value="yield">Rendement</option></select>
       </label>
@@ -409,7 +410,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
     <div class="ph reveal"><img src="../img/interior.webp" alt="Manteau camel sur un banc en travertin" loading="lazy"></div>
     <div class="reveal">
       <p class="eyebrow" style="margin-bottom:20px">Destinations</p>
-      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">Six marchés,<br>un seul standard</h2>
+      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">Sept marchés,<br>un seul standard</h2>
       <ul class="dest" id="dest">
         <li data-c="ОАЭ"><span class="c">Dubaï</span><span class="k">Sans impôt sur le revenu · plans de paiement</span><span class="a">→</span></li>
         <li data-c="Индонезия"><span class="c">Bali</span><span class="k">Location touristique · leasehold</span><span class="a">→</span></li>
@@ -417,6 +418,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
         <li data-c="Португалия"><span class="c">Lisbonne</span><span class="k">Marché européen · revente</span><span class="a">→</span></li>
         <li data-c="Кипр"><span class="c">Limassol</span><span class="k">Méditerranée · UE</span><span class="a">→</span></li>
         <li data-c="Турция"><span class="c">Istanbul</span><span class="k">Le plus grand marché de la région</span><span class="a">→</span></li>
+        <li data-c="Грузия"><span class="c">Batoumi</span><span class="k">Ticket d’entrée bas · station de la mer Noire</span><span class="a">→</span></li>
       </ul>
     </div>
   </div>
@@ -488,7 +490,8 @@ const data=[
  {id:3,name:"Casa Alfama",city:"Lisbonne",country:"Португалия",cn:"Portugal",img:"p-lisbon",price:640000,yield:4.6,year:2028,plan:"20/80",y:6.8,l:8.7,r:9.2},
  {id:4,name:"Kamala Hillside",city:"Phuket",country:"Таиланд",cn:"Thaïlande",img:"p-phuket",price:310000,yield:8.1,year:2026,plan:"35/65",y:8.4,l:7.6,r:7.4},
  {id:5,name:"Ivory Shore",city:"Limassol",country:"Кипр",cn:"Chypre",img:"p-limassol",price:780000,yield:5.4,year:2028,plan:"10/90",y:7.1,l:8.2,r:8.8},
- {id:6,name:"Bosphorus Line",city:"Istanbul",country:"Турция",cn:"Turquie",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0}
+ {id:6,name:"Bosphorus Line",city:"Istanbul",country:"Турция",cn:"Turquie",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0},
+ {id:7,name:"Black Sea Crown",city:"Batoumi",country:"Грузия",cn:"Géorgie",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8}
 ];
 const score=o=>+((o.y*.4+o.l*.3+o.r*.3).toFixed(1));
 data.forEach(o=>o.s=score(o));
