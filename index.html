@@ -54,6 +54,43 @@ header.solid .brand .mark,footer .brand .mark{fill:var(--camel)}
 .lang span{border-bottom:1px solid currentColor}
 .lang a{opacity:.6;transition:opacity .25s}.lang a:hover{opacity:1}
 .drawer .lang{margin-top:32px;font-size:13px}
+.signin{font-size:11px;letter-spacing:.2em;text-transform:uppercase;position:relative;padding:4px 0}
+.signin::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:currentColor;transition:width .35s var(--ease)}
+.signin:hover::after{width:100%}
+.drawer .auth{display:flex;gap:14px;margin-top:40px}
+.roles .cards{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.roles .cards>div{padding:48px 48px 8px 0;display:flex;flex-direction:column}
+.roles .cards>div+div{padding-left:48px;border-left:1px solid var(--line)}
+.roles h3{font-family:var(--serif);font-weight:300;font-size:clamp(30px,3vw,44px);line-height:1.05;margin:14px 0 24px}
+.roles ul{list-style:none;padding:0;margin:0 0 36px;display:grid;gap:12px;color:var(--ink-2);font-size:15px}
+.roles li{padding-left:22px;position:relative}.roles li::before{content:"";position:absolute;left:0;top:.75em;width:10px;height:1px;background:var(--camel)}
+.roles .go{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:auto}
+.roles .go .signin{color:var(--ink)}
+.acct{padding-top:calc(76px + clamp(56px,8vw,120px));min-height:100svh}
+.acct .grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,120px);align-items:start}
+.acct h1{font-family:var(--serif);font-weight:300;font-size:clamp(44px,5.4vw,84px);line-height:1;margin:20px 0 28px}
+.acct h1 em{font-style:italic;color:var(--camel-deep)}
+.acct .intro p{color:var(--ink-2);max-width:40ch}
+.acct .perks{margin-top:48px;border-top:1px solid var(--line);padding-top:32px}
+.acct .perks ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:12px;color:var(--ink-2);font-size:15px}
+.acct .perks li{padding-left:22px;position:relative}.acct .perks li::before{content:"";position:absolute;left:0;top:.75em;width:10px;height:1px;background:var(--camel)}
+.panel{background:var(--paper);border:1px solid var(--line);padding:clamp(28px,4vw,56px)}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);margin:10px 0 36px}
+.seg button{height:48px;border:0;background:transparent;font:inherit;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;color:var(--ink);transition:background .25s,color .25s}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ivory)}
+.tabs{display:flex;gap:32px;border-bottom:1px solid var(--line);margin-bottom:32px}
+.tabs button{background:none;border:0;padding:0 0 14px;font-family:var(--serif);font-size:26px;font-weight:300;color:var(--mute);cursor:pointer;border-bottom:1px solid transparent;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--ink)}
+.af{display:grid;gap:26px}
+.af .two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.af .row2{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.af .small{font-size:12px;color:var(--mute)}
+.af .small a{border-bottom:1px solid currentColor}
+.af .err{color:#9a3b2a;font-size:13px;display:none}.af.bad .err{display:block}
+.af .done{font-family:var(--serif);font-size:24px;line-height:1.25;display:none}
+.af.sent>*:not(.done){display:none}.af.sent .done{display:block}
+[hidden]{display:none!important}
+.field input::placeholder{color:#B5AA9A}
 .menu{display:flex;gap:36px;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
 .menu a{position:relative;padding:4px 0}
 .menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:currentColor;transition:width .35s var(--ease)}
@@ -196,6 +233,12 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
   .rating .hide-md{display:none}
 }
 @media (max-width:720px){
+  .roles .cards{grid-template-columns:1fr}
+  .roles .cards>div,.roles .cards>div+div{padding:36px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .acct .grid2,.af .two{grid-template-columns:1fr}
+  .signin.hd{display:none}
+  .acct .perks{display:none}
+  .acct{padding-top:calc(76px + 40px)}
   .act .lang{display:none}
   .head,.split,.cta .box{grid-template-columns:1fr}
   .head p{justify-self:start}
@@ -238,7 +281,8 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
       <a href="#method">Methodology</a>
     </nav>
     <div class="act"><div class="lang"><span>EN</span><a href="/ru/" hreflang="ru" lang="ru">RU</a></div>
-    <a href="#contact" class="btn">Find a property</a>
+    <a href="/account/" class="signin hd">Sign in</a>
+    <a href="/account/?mode=register" class="btn">Register</a>
     <button class="burger" aria-label="Open menu" id="burger"><span></span><span></span></button></div>
   </div>
 </header>
@@ -248,6 +292,7 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
   <nav>
     <a href="#objects">Properties</a><a href="#rating">Rating</a><a href="#destinations">Destinations</a><a href="#method">Methodology</a><a href="#contact">Find a property</a>
   </nav>
+  <div class="auth"><a href="/account/?mode=register" class="btn fill">Register</a><a href="/account/" class="btn">Sign in</a></div>
   <div class="lang"><span>EN</span><a href="/ru/" hreflang="ru" lang="ru">RU</a></div>
 </div>
 
@@ -356,6 +401,21 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
     <div class="head reveal" style="margin-bottom:0">
       <h2 class="serif">Methodology</h2>
       <p>Every listing goes through checks on the developer, documents and deal terms. Expert notes cover strengths, risks and realistic exit scenarios: renting out, or reselling before or after completion.</p>
+    </div>
+  </div>
+</section>
+
+<section class="roles" id="accounts">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2 class="serif">One platform,<br>two sides of the deal</h2>
+      <p>Investors compare rated new builds and track their selections. Developers publish projects and receive qualified enquiries.</p>
+    </div>
+    <div class="cards reveal">
+      <div><span class="eyebrow">For investors</span><h3>Investor account</h3><ul><li>Saved properties and personal selections</li><li>GEC Score alerts for new projects</li><li>Direct requests to vetted developers</li></ul>
+        <div class="go"><a class="btn fill" href="/account/?mode=register&amp;role=investor">Register as investor</a><a class="signin" href="/account/?role=investor">Sign in</a></div></div>
+      <div><span class="eyebrow">For developers</span><h3>Developer account</h3><ul><li>Project listing in one data standard</li><li>Independent GEC Score rating</li><li>Qualified enquiries from international investors</li></ul>
+        <div class="go"><a class="btn fill" href="/account/?mode=register&amp;role=developer">Register as developer</a><a class="signin" href="/account/?role=developer">Sign in</a></div></div>
     </div>
   </div>
 </section>
