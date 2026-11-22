@@ -1,10 +1,13 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Global Estate Chain — международные новостройки с рейтингом</title>
-<meta name="description" content="Отобранные новостройки мира для инвестиций: единый формат данных, рейтинг доходности, ликвидности и риска, планы оплаты и сроки сдачи.">
+<title>Global Estate Chain — International New-Build Property, Rated</title>
+<meta name="description" content="Curated new-build developments worldwide for investors: one data standard, independent ratings for yield, liquidity and risk, payment plans and completion dates.">
+<link rel="alternate" hreflang="en" href="https://globalestatechain.com/">
+<link rel="alternate" hreflang="ru" href="https://globalestatechain.com/ru/">
+<link rel="alternate" hreflang="x-default" href="https://globalestatechain.com/">
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
@@ -45,6 +48,12 @@ header.solid{background:rgba(246,241,233,.98);backdrop-filter:blur(8px);border-c
 .brand .mark{width:40px;height:40px;flex:none;fill:currentColor}
 header.solid .brand .mark,footer .brand .mark{fill:var(--camel)}
 .brand small{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.42em;color:inherit;opacity:.7;margin-top:-2px}
+.act{display:flex;align-items:center;gap:28px}
+.lang{font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:flex;gap:10px}
+.lang a,.lang span{padding:4px 0}
+.lang span{border-bottom:1px solid currentColor}
+.lang a{opacity:.6;transition:opacity .25s}.lang a:hover{opacity:1}
+.drawer .lang{margin-top:32px;font-size:13px}
 .menu{display:flex;gap:36px;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
 .menu a{position:relative;padding:4px 0}
 .menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:currentColor;transition:width .35s var(--ease)}
@@ -187,6 +196,7 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
   .rating .hide-md{display:none}
 }
 @media (max-width:720px){
+  .act .lang{display:none}
   .head,.split,.cta .box{grid-template-columns:1fr}
   .head p{justify-self:start}
   .search{grid-template-columns:1fr}
@@ -220,40 +230,42 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 
 <header id="hdr">
   <div class="wrap nav">
-    <a href="#" class="brand" aria-label="Global Estate Chain — на главную"><svg class="mark" aria-hidden="true"><use href="#gec-mark"/></svg><span>Global Estate<small>Chain · International</small></span></a>
-    <nav class="menu" aria-label="Основная навигация">
-      <a href="#objects">Объекты</a>
-      <a href="#rating">Рейтинг</a>
-      <a href="#destinations">Направления</a>
-      <a href="#method">Методология</a>
+    <a href="#" class="brand" aria-label="Global Estate Chain — home"><svg class="mark" aria-hidden="true"><use href="#gec-mark"/></svg><span>Global Estate<small>Chain · International</small></span></a>
+    <nav class="menu" aria-label="Main navigation">
+      <a href="#objects">Properties</a>
+      <a href="#rating">Rating</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#method">Methodology</a>
     </nav>
-    <a href="#contact" class="btn">Подобрать объект</a>
-    <button class="burger" aria-label="Открыть меню" id="burger"><span></span><span></span></button>
+    <div class="act"><div class="lang"><span>EN</span><a href="/ru/" hreflang="ru" lang="ru">RU</a></div>
+    <a href="#contact" class="btn">Find a property</a>
+    <button class="burger" aria-label="Open menu" id="burger"><span></span><span></span></button></div>
   </div>
 </header>
 
-<div class="drawer" id="drawer" role="dialog" aria-label="Меню">
-  <button class="x" id="close">Закрыть</button>
+<div class="drawer" id="drawer" role="dialog" aria-label="Menu">
+  <button class="x" id="close">Close</button>
   <nav>
-    <a href="#objects">Объекты</a><a href="#rating">Рейтинг</a><a href="#destinations">Направления</a><a href="#method">Методология</a><a href="#contact">Подобрать объект</a>
+    <a href="#objects">Properties</a><a href="#rating">Rating</a><a href="#destinations">Destinations</a><a href="#method">Methodology</a><a href="#contact">Find a property</a>
   </nav>
+  <div class="lang"><span>EN</span><a href="/ru/" hreflang="ru" lang="ru">RU</a></div>
 </div>
 
 <main>
-<section class="hero" aria-label="Главный экран">
-  <div class="bg"><img src="img/hero.webp" alt="Терраса пентхауса из травертина с видом на море на закате"></div>
+<section class="hero" aria-label="Hero">
+  <div class="bg"><img src="img/hero.webp" alt="Travertine penthouse terrace overlooking the sea at sunset"></div>
   <div class="wrap inner">
-    <p class="eyebrow">Международные новостройки · Отбор и рейтинг</p>
-    <h1>Недвижимость мира <em>с понятной</em> инвестиционной логикой</h1>
-    <p class="lead">Проверенные проекты в едином формате: цена, план оплаты, срок сдачи, застройщик, риски и сценарии выхода.</p>
+    <p class="eyebrow">International new builds · Curated and rated</p>
+    <h1>Global property <em>with clear</em> investment logic</h1>
+    <p class="lead">Vetted projects in one format: price, payment plan, completion date, developer, risks and exit scenarios.</p>
     <form class="search" id="search" role="search">
-      <label><span>Направление</span>
-        <select id="s-country"><option value="all">Все страны</option><option>ОАЭ</option><option>Индонезия</option><option>Таиланд</option><option>Португалия</option><option>Кипр</option><option>Турция</option></select></label>
-      <label><span>Бюджет</span>
-        <select id="s-budget"><option value="0">Любой</option><option value="300000">до $300 000</option><option value="600000">до $600 000</option><option value="1000000">до $1 000 000</option></select></label>
-      <label><span>Сдача</span>
-        <select id="s-year"><option value="0">Любой срок</option><option value="2027">до 2027</option><option value="2028">до 2028</option></select></label>
-      <button type="submit">Найти</button>
+      <label><span>Destination</span>
+        <select id="s-country"><option value="all">All countries</option><option value="ОАЭ">UAE</option><option value="Индонезия">Indonesia</option><option value="Таиланд">Thailand</option><option value="Португалия">Portugal</option><option value="Кипр">Cyprus</option><option value="Турция">Türkiye</option></select></label>
+      <label><span>Budget</span>
+        <select id="s-budget"><option value="0">Any</option><option value="300000">up to $300,000</option><option value="600000">up to $600,000</option><option value="1000000">up to $1,000,000</option></select></label>
+      <label><span>Completion</span>
+        <select id="s-year"><option value="0">Any date</option><option value="2027">by 2027</option><option value="2028">by 2028</option></select></label>
+      <button type="submit">Search</button>
     </form>
   </div>
 </section>
@@ -261,13 +273,13 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 <section id="about">
   <div class="wrap">
     <div class="head reveal">
-      <h2 class="serif">Не витрина.<br>Инструмент выбора.</h2>
-      <p>Мы собираем новостройки со всего мира, приводим их к единому стандарту и оцениваем глазами инвестора — чтобы решение принималось по данным, а не по рекламе.</p>
+      <h2 class="serif">Not a showcase.<br>A decision tool.</h2>
+      <p>We gather new developments from around the world, bring them to a single standard and assess them through an investor’s eyes — so decisions are driven by data, not advertising.</p>
     </div>
     <div class="principles reveal">
-      <div><span class="n">01 — Отбор</span><h3>Проверенные проекты</h3><p>В каталог попадают объекты с прозрачным застройщиком, понятным юридическим статусом и реальными сроками.</p></div>
-      <div><span class="n">02 — Сравнение</span><h3>Единый формат данных</h3><p>Цена за метр, план оплаты, доходность и сроки — одинаково для Дубая, Бали и Лиссабона.</p></div>
-      <div><span class="n">03 — Взгляд инвестора</span><h3>Риски и сценарии</h3><p>Каждому объекту — оценка доходности, ликвидности и риска, а также сценарии выхода.</p></div>
+      <div><span class="n">01 — Selection</span><h3>Vetted projects</h3><p>Only projects with a transparent developer, clear legal status and realistic timelines make it into the catalogue.</p></div>
+      <div><span class="n">02 — Comparison</span><h3>One data standard</h3><p>Price per square metre, payment plan, yield and timelines — presented the same way for Dubai, Bali and Lisbon.</p></div>
+      <div><span class="n">03 — Investor view</span><h3>Risks and scenarios</h3><p>Every project receives a yield, liquidity and risk assessment, along with exit scenarios.</p></div>
     </div>
   </div>
 </section>
@@ -275,64 +287,64 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 <section class="listings" id="objects">
   <div class="wrap">
     <div class="head reveal">
-      <h2 class="serif">Избранные объекты</h2>
-      <p>Подборка новостроек с наивысшей оценкой GEC Score. Индекс рассчитывается по трём независимым осям.</p>
+      <h2 class="serif">Featured properties</h2>
+      <p>A selection of new builds with the highest GEC Score. The index is calculated across three independent axes.</p>
     </div>
-    <div class="filters" role="group" aria-label="Фильтр по стране" id="chips">
-      <button class="chip" aria-pressed="true" data-c="all">Все</button>
-      <button class="chip" aria-pressed="false" data-c="ОАЭ">ОАЭ</button>
-      <button class="chip" aria-pressed="false" data-c="Индонезия">Бали</button>
-      <button class="chip" aria-pressed="false" data-c="Таиланд">Пхукет</button>
-      <button class="chip" aria-pressed="false" data-c="Португалия">Лиссабон</button>
-      <button class="chip" aria-pressed="false" data-c="Кипр">Лимасол</button>
-      <button class="chip" aria-pressed="false" data-c="Турция">Стамбул</button>
-      <label class="sort">Сортировка
-        <select id="sort"><option value="score">По рейтингу</option><option value="price">По цене</option><option value="yield">По доходности</option></select>
+    <div class="filters" role="group" aria-label="Filter by country" id="chips">
+      <button class="chip" aria-pressed="true" data-c="all">All</button>
+      <button class="chip" aria-pressed="false" data-c="ОАЭ">UAE</button>
+      <button class="chip" aria-pressed="false" data-c="Индонезия">Bali</button>
+      <button class="chip" aria-pressed="false" data-c="Таиланд">Phuket</button>
+      <button class="chip" aria-pressed="false" data-c="Португалия">Lisbon</button>
+      <button class="chip" aria-pressed="false" data-c="Кипр">Limassol</button>
+      <button class="chip" aria-pressed="false" data-c="Турция">Istanbul</button>
+      <label class="sort">Sort by
+        <select id="sort"><option value="score">Rating</option><option value="price">Price</option><option value="yield">Yield</option></select>
       </label>
     </div>
     <div class="grid" id="grid" aria-live="polite"></div>
-    <p class="note">Демонстрационные карточки: названия, цены и показатели приведены для примера оформления и не являются офертой.</p>
+    <p class="note">Demo listings: names, prices and figures are shown for illustration only and do not constitute an offer.</p>
   </div>
 </section>
 
 <section class="rating" id="rating">
   <div class="wrap">
     <div class="head reveal">
-      <h2 class="serif">Рейтинг новостроек</h2>
-      <p>GEC Score — от 0 до 10. Доходность, ликвидность и надёжность оцениваются раздельно, поэтому сильный объект не прячет слабые стороны за средним баллом.</p>
+      <h2 class="serif">New-build rating</h2>
+      <p>GEC Score runs from 0 to 10. Yield, liquidity and reliability are scored separately, so a strong project cannot hide its weak spots behind an average.</p>
     </div>
     <div class="reveal">
     <table>
-      <thead><tr><th>№</th><th>Проект</th><th class="hide-sm">Доходность</th><th class="hide-sm">Ликвидность</th><th class="hide-md hide-sm">Надёжность</th><th style="text-align:right">Score</th></tr></thead>
+      <thead><tr><th>No.</th><th>Project</th><th class="hide-sm">Yield</th><th class="hide-sm">Liquidity</th><th class="hide-md hide-sm">Reliability</th><th style="text-align:right">Score</th></tr></thead>
       <tbody id="tbody"></tbody>
     </table>
     </div>
     <div class="legend reveal">
-      <div><h4>Доходность</h4><p>Арендный доход и прогноз роста цены к сдаче с учётом расходов на владение.</p></div>
-      <div><h4>Ликвидность</h4><p>Спрос на вторичном рынке, скорость перепродажи и глубина арендного рынка района.</p></div>
-      <div><h4>Надёжность</h4><p>История застройщика, эскроу и правовой статус, валютные и регуляторные риски.</p></div>
+      <div><h4>Yield</h4><p>Rental income and projected price growth to completion, net of ownership costs.</p></div>
+      <div><h4>Liquidity</h4><p>Resale demand, speed of resale and depth of the local rental market.</p></div>
+      <div><h4>Reliability</h4><p>Developer track record, escrow and legal status, currency and regulatory risks.</p></div>
     </div>
   </div>
 </section>
 
-<section class="band" aria-label="Цитата">
-  <img src="img/p-istanbul.webp" alt="Интерьер апартаментов с видом на Босфор" loading="lazy">
-  <div class="wrap inner"><blockquote>Тишина цифр <em>вместо</em> шума рекламы</blockquote></div>
+<section class="band" aria-label="Quote">
+  <img src="img/p-istanbul.webp" alt="Apartment interior overlooking the Bosphorus" loading="lazy">
+  <div class="wrap inner"><blockquote>The quiet of numbers <em>over</em> the noise of advertising</blockquote></div>
 </section>
 
 <section id="destinations">
   <div class="wrap split">
-    <div class="ph reveal"><img src="img/interior.webp" alt="Пальто цвета кэмел на скамье из травертина" loading="lazy"></div>
+    <div class="ph reveal"><img src="img/interior.webp" alt="Camel coat on a travertine bench" loading="lazy"></div>
     <div class="reveal">
-      <p class="eyebrow" style="margin-bottom:20px">Направления</p>
-      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">Шесть рынков,<br>один стандарт</h2>
+      <p class="eyebrow" style="margin-bottom:20px">Destinations</p>
+      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">Six markets,<br>one standard</h2>
       <ul class="dest" id="dest">
-        <li data-c="ОАЭ"><span class="c">Дубай</span><span class="k">Без налога на доход · план оплаты</span><span class="a">→</span></li>
-        <li data-c="Индонезия"><span class="c">Бали</span><span class="k">Курортная аренда · leasehold</span><span class="a">→</span></li>
-        <li data-c="Таиланд"><span class="c">Пхукет</span><span class="k">Кондо-квота для иностранцев</span><span class="a">→</span></li>
-        <li data-c="Португалия"><span class="c">Лиссабон</span><span class="k">Европейский рынок · вторичка</span><span class="a">→</span></li>
-        <li data-c="Кипр"><span class="c">Лимасол</span><span class="k">Средиземноморье · ЕС</span><span class="a">→</span></li>
-        <li data-c="Турция"><span class="c">Стамбул</span><span class="k">Крупнейший рынок региона</span><span class="a">→</span></li>
+        <li data-c="ОАЭ"><span class="c">Dubai</span><span class="k">No income tax · payment plans</span><span class="a">→</span></li>
+        <li data-c="Индонезия"><span class="c">Bali</span><span class="k">Resort rentals · leasehold</span><span class="a">→</span></li>
+        <li data-c="Таиланд"><span class="c">Phuket</span><span class="k">Foreign condo quota</span><span class="a">→</span></li>
+        <li data-c="Португалия"><span class="c">Lisbon</span><span class="k">European market · resale</span><span class="a">→</span></li>
+        <li data-c="Кипр"><span class="c">Limassol</span><span class="k">Mediterranean · EU</span><span class="a">→</span></li>
+        <li data-c="Турция"><span class="c">Istanbul</span><span class="k">The region’s largest market</span><span class="a">→</span></li>
       </ul>
     </div>
   </div>
@@ -342,8 +354,8 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
   <div class="wrap">
     <hr class="rule" style="margin-bottom:clamp(80px,11vw,160px)">
     <div class="head reveal" style="margin-bottom:0">
-      <h2 class="serif">Методология</h2>
-      <p>Каждая карточка проходит проверку застройщика, документов и условий сделки. В заметках эксперта — сильные стороны, риски и реалистичные сценарии выхода: аренда, перепродажа до сдачи или после.</p>
+      <h2 class="serif">Methodology</h2>
+      <p>Every listing goes through checks on the developer, documents and deal terms. Expert notes cover strengths, risks and realistic exit scenarios: renting out, or reselling before or after completion.</p>
     </div>
   </div>
 </section>
@@ -351,20 +363,20 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 <section class="cta" id="contact">
   <div class="wrap box">
     <div class="reveal">
-      <p class="eyebrow" style="margin-bottom:20px">Персональная подборка</p>
-      <h2>Хотите попасть в первые подборки?</h2>
+      <p class="eyebrow" style="margin-bottom:20px">Personal selection</p>
+      <h2>Want to be first to see our selections?</h2>
     </div>
     <form class="lead-form reveal" id="lead" novalidate>
       <div class="row">
-        <label class="field"><span>Имя</span><input name="name" required autocomplete="name"></label>
-        <label class="field"><span>Email или Telegram</span><input name="contact" required></label>
+        <label class="field"><span>Name</span><input name="name" required autocomplete="name"></label>
+        <label class="field"><span>Email or Telegram</span><input name="contact" required></label>
       </div>
       <div class="row">
-        <label class="field"><span>Цель</span><select name="goal"><option>Арендный доход</option><option>Рост капитала</option><option>Релокация</option></select></label>
-        <label class="field"><span>Бюджет</span><select name="budget"><option>до $300 000</option><option>$300 000 – 600 000</option><option>от $600 000</option></select></label>
+        <label class="field"><span>Goal</span><select name="goal"><option>Rental income</option><option>Capital growth</option><option>Relocation</option></select></label>
+        <label class="field"><span>Budget</span><select name="budget"><option>up to $300,000</option><option>$300,000 – 600,000</option><option>$600,000+</option></select></label>
       </div>
-      <div><button class="btn fill" type="submit">Отправить заявку</button></div>
-      <p class="ok" role="status">Спасибо. Мы свяжемся с вами, когда подборка будет готова.</p>
+      <div><button class="btn fill" type="submit">Send request</button></div>
+      <p class="ok" role="status">Thank you. We will be in touch when your selection is ready.</p>
     </form>
   </div>
 </section>
@@ -373,27 +385,27 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 <footer>
   <div class="wrap">
     <div class="top">
-      <div><div class="brand"><svg class="mark" aria-hidden="true"><use href="#gec-mark"/></svg><span>Global Estate<small>Chain · International</small></span></div><p style="margin-top:22px;max-width:34ch;font-size:14px">Каталог международных новостроек для инвестиций с независимым рейтингом.</p></div>
-      <div><h5>Каталог</h5><ul><li><a href="#objects">Объекты</a></li><li><a href="#rating">Рейтинг</a></li><li><a href="#destinations">Направления</a></li></ul></div>
-      <div><h5>Портал</h5><ul><li><a href="#about">О проекте</a></li><li><a href="#method">Методология</a></li><li><a href="#contact">Заявка</a></li></ul></div>
-      <div><h5>Контакты</h5><ul><li><a href="http://globalestatechain.com">globalestatechain.com</a></li><li>Дубай, ОАЭ</li></ul></div>
+      <div><div class="brand"><svg class="mark" aria-hidden="true"><use href="#gec-mark"/></svg><span>Global Estate<small>Chain · International</small></span></div><p style="margin-top:22px;max-width:34ch;font-size:14px">A catalogue of international new builds for investors, with an independent rating.</p></div>
+      <div><h5>Catalogue</h5><ul><li><a href="#objects">Properties</a></li><li><a href="#rating">Rating</a></li><li><a href="#destinations">Destinations</a></li></ul></div>
+      <div><h5>Platform</h5><ul><li><a href="#about">About</a></li><li><a href="#method">Methodology</a></li><li><a href="#contact">Request</a></li></ul></div>
+      <div><h5>Contact</h5><ul><li><a href="http://globalestatechain.com">globalestatechain.com</a></li><li>Dubai, UAE</li></ul></div>
     </div>
-    <div class="bot"><span>© 2026 Global Estate Chain</span><span>Информация на сайте не является инвестиционной рекомендацией.</span></div>
+    <div class="bot"><span>© 2026 Global Estate Chain</span><span>Information on this site is not investment advice.</span></div>
   </div>
 </footer>
 
 <script>
 const data=[
- {id:1,name:"Sable Residences",city:"Дубай",country:"ОАЭ",img:"p-dubai",price:420000,yield:7.2,year:2027,plan:"60/40",y:8.6,l:9.1,r:8.4},
- {id:2,name:"Travertine Villas",city:"Бали, Чангу",country:"Индонезия",img:"p-bali",price:285000,yield:9.8,year:2027,plan:"30/70",y:9.3,l:7.2,r:6.9},
- {id:3,name:"Casa Alfama",city:"Лиссабон",country:"Португалия",img:"p-lisbon",price:640000,yield:4.6,year:2028,plan:"20/80",y:6.8,l:8.7,r:9.2},
- {id:4,name:"Kamala Hillside",city:"Пхукет",country:"Таиланд",img:"p-phuket",price:310000,yield:8.1,year:2026,plan:"35/65",y:8.4,l:7.6,r:7.4},
- {id:5,name:"Ivory Shore",city:"Лимасол",country:"Кипр",img:"p-limassol",price:780000,yield:5.4,year:2028,plan:"10/90",y:7.1,l:8.2,r:8.8},
- {id:6,name:"Bosphorus Line",city:"Стамбул",country:"Турция",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0}
+ {id:1,name:"Sable Residences",city:"Dubai",country:"ОАЭ",cn:"UAE",img:"p-dubai",price:420000,yield:7.2,year:2027,plan:"60/40",y:8.6,l:9.1,r:8.4},
+ {id:2,name:"Travertine Villas",city:"Bali, Canggu",country:"Индонезия",cn:"Indonesia",img:"p-bali",price:285000,yield:9.8,year:2027,plan:"30/70",y:9.3,l:7.2,r:6.9},
+ {id:3,name:"Casa Alfama",city:"Lisbon",country:"Португалия",cn:"Portugal",img:"p-lisbon",price:640000,yield:4.6,year:2028,plan:"20/80",y:6.8,l:8.7,r:9.2},
+ {id:4,name:"Kamala Hillside",city:"Phuket",country:"Таиланд",cn:"Thailand",img:"p-phuket",price:310000,yield:8.1,year:2026,plan:"35/65",y:8.4,l:7.6,r:7.4},
+ {id:5,name:"Ivory Shore",city:"Limassol",country:"Кипр",cn:"Cyprus",img:"p-limassol",price:780000,yield:5.4,year:2028,plan:"10/90",y:7.1,l:8.2,r:8.8},
+ {id:6,name:"Bosphorus Line",city:"Istanbul",country:"Турция",cn:"Türkiye",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0}
 ];
 const score=o=>+((o.y*.4+o.l*.3+o.r*.3).toFixed(1));
 data.forEach(o=>o.s=score(o));
-const fmt=n=>"$ "+n.toLocaleString("ru-RU");
+const fmt=n=>"$"+n.toLocaleString("en-US");
 let state={c:"all",budget:0,year:0,sort:"score"};
 const grid=document.getElementById("grid");
 const favs=new Set();
@@ -404,18 +416,18 @@ function render(){
    <article class="card" tabindex="0" aria-label="${o.name}, ${o.city}">
      <div class="ph"><img src="img/${o.img}.webp" alt="${o.name} — ${o.city}" loading="lazy">
        <div class="score"><b>${o.s.toFixed(1)}</b><i>GEC Score</i></div>
-       <button class="fav" aria-label="В избранное" aria-pressed="${favs.has(o.id)}" data-id="${o.id}"><svg width="14" height="14" viewBox="0 0 24 24" fill="${favs.has(o.id)?'currentColor':'none'}" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7.5-4.6-9.5-9.2C1 8.2 3.4 4.5 7 4.5c2 0 3.6 1.2 5 3 1.4-1.8 3-3 5-3 3.6 0 6 3.7 4.5 7.3C19.5 16.4 12 21 12 21z"/></svg></button>
+       <button class="fav" aria-label="Add to favourites" aria-pressed="${favs.has(o.id)}" data-id="${o.id}"><svg width="14" height="14" viewBox="0 0 24 24" fill="${favs.has(o.id)?'currentColor':'none'}" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7.5-4.6-9.5-9.2C1 8.2 3.4 4.5 7 4.5c2 0 3.6 1.2 5 3 1.4-1.8 3-3 5-3 3.6 0 6 3.7 4.5 7.3C19.5 16.4 12 21 12 21z"/></svg></button>
      </div>
-     <div class="meta"><span class="eyebrow">${o.city} · ${o.country}</span><span class="eyebrow">Сдача ${o.year}</span></div>
+     <div class="meta"><span class="eyebrow">${o.city} · ${o.cn}</span><span class="eyebrow">Completion ${o.year}</span></div>
      <h3>${o.name}</h3>
-     <dl class="facts"><div><dt>Доходность</dt><dd>${o.yield.toFixed(1).replace(".",",")}%</dd></div><div><dt>План оплаты</dt><dd>${o.plan}</dd></div><div><dt>Риск</dt><dd>${o.r>=8.5?"Низкий":o.r>=7.3?"Умеренный":"Повышенный"}</dd></div></dl>
-     <p class="price"><span>от</span>${fmt(o.price)}</p>
-   </article>`).join(""):`<p class="empty">По этим параметрам объектов пока нет</p>`;
+     <dl class="facts"><div><dt>Yield</dt><dd>${o.yield.toFixed(1)}%</dd></div><div><dt>Payment plan</dt><dd>${o.plan}</dd></div><div><dt>Risk</dt><dd>${o.r>=8.5?"Low":o.r>=7.3?"Moderate":"Elevated"}</dd></div></dl>
+     <p class="price"><span>from</span>${fmt(o.price)}</p>
+   </article>`).join(""):`<p class="empty">No properties match these filters yet</p>`;
 }
 function renderTable(){
   const t=[...data].sort((a,b)=>b.s-a.s);
   const bar=v=>`<div class="bar"><div class="t"><i style="width:${v*10}%"></i></div><span>${v.toFixed(1)}</span></div>`;
-  document.getElementById("tbody").innerHTML=t.map((o,i)=>`<tr><td class="rk">${String(i+1).padStart(2,"0")}</td><td class="nm">${o.name}<small>${o.city}, ${o.country}</small></td><td class="hide-sm">${bar(o.y)}</td><td class="hide-sm">${bar(o.l)}</td><td class="hide-md hide-sm">${bar(o.r)}</td><td class="tot">${o.s.toFixed(1)}</td></tr>`).join("");
+  document.getElementById("tbody").innerHTML=t.map((o,i)=>`<tr><td class="rk">${String(i+1).padStart(2,"0")}</td><td class="nm">${o.name}<small>${o.city}, ${o.cn}</small></td><td class="hide-sm">${bar(o.y)}</td><td class="hide-sm">${bar(o.l)}</td><td class="hide-md hide-sm">${bar(o.r)}</td><td class="tot">${o.s.toFixed(1)}</td></tr>`).join("");
 }
 function setCountry(c){
   state.c=c;
