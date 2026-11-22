@@ -332,7 +332,7 @@ html[lang=zh] .hero h1,html[lang=zh] .head h2{letter-spacing:.02em;line-height:1
     <p class="lead">经过核验的项目，统一呈现：价格、付款计划、交付时间、开发商、风险与退出方案。</p>
     <form class="search" id="search" role="search">
       <label><span>国家</span>
-        <select id="s-country"><option value="all">所有国家</option><option value="ОАЭ">阿联酋</option><option value="Индонезия">印度尼西亚</option><option value="Таиланд">泰国</option><option value="Португалия">葡萄牙</option><option value="Кипр">塞浦路斯</option><option value="Турция">土耳其</option><option value="Грузия">格鲁吉亚</option></select></label>
+        <select id="s-country"><option value="all">所有国家</option><option value="ОАЭ">阿联酋</option><option value="Индонезия">印度尼西亚</option><option value="Таиланд">泰国</option><option value="Португалия">葡萄牙</option><option value="Кипр">塞浦路斯</option><option value="Турция">土耳其</option><option value="Грузия">格鲁吉亚</option><option value="Черногория">黑山</option><option value="Северный Кипр">北塞浦路斯</option></select></label>
       <label><span>城市</span>
         <select id="s-city"><option value="all">所有城市</option></select></label>
       <label><span>预算</span>
@@ -373,6 +373,8 @@ html[lang=zh] .hero h1,html[lang=zh] .head h2{letter-spacing:.02em;line-height:1
       <button class="chip" aria-pressed="false" data-c="Кипр">利马索尔</button>
       <button class="chip" aria-pressed="false" data-c="Турция">伊斯坦布尔</button>
       <button class="chip" aria-pressed="false" data-c="Грузия">巴统</button>
+      <button class="chip" aria-pressed="false" data-c="Черногория">布德瓦</button>
+      <button class="chip" aria-pressed="false" data-c="Северный Кипр">凯里尼亚</button>
       <label class="sort">排序
         <select id="sort"><option value="score">评级</option><option value="price">价格</option><option value="yield">收益率</option></select>
       </label>
@@ -412,7 +414,7 @@ html[lang=zh] .hero h1,html[lang=zh] .head h2{letter-spacing:.02em;line-height:1
     <div class="ph reveal"><img src="../img/interior.webp" alt="洞石长凳上的驼色大衣" loading="lazy"></div>
     <div class="reveal">
       <p class="eyebrow" style="margin-bottom:20px">目的地</p>
-      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">七个市场，<br>一个标准</h2>
+      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">九个市场，<br>一个标准</h2>
       <ul class="dest" id="dest">
         <li data-c="ОАЭ"><span class="c">迪拜</span><span class="k">免个人所得税 · 分期付款</span><span class="a">→</span></li>
         <li data-c="Индонезия"><span class="c">巴厘岛</span><span class="k">度假租赁 · 租赁产权</span><span class="a">→</span></li>
@@ -421,6 +423,8 @@ html[lang=zh] .hero h1,html[lang=zh] .head h2{letter-spacing:.02em;line-height:1
         <li data-c="Кипр"><span class="c">利马索尔</span><span class="k">地中海 · 欧盟</span><span class="a">→</span></li>
         <li data-c="Турция"><span class="c">伊斯坦布尔</span><span class="k">区域最大市场</span><span class="a">→</span></li>
         <li data-c="Грузия"><span class="c">巴统</span><span class="k">入门门槛低 · 黑海度假胜地</span><span class="a">→</span></li>
+        <li data-c="Черногория"><span class="c">布德瓦</span><span class="k">亚得里亚海岸 · 欧元结算</span><span class="a">→</span></li>
+        <li data-c="Северный Кипр"><span class="c">凯里尼亚</span><span class="k">入门门槛低 · 需核查产权</span><span class="a">→</span></li>
       </ul>
     </div>
   </div>
@@ -493,7 +497,9 @@ const data=[
  {id:4,name:"Kamala Hillside",city:"普吉岛",country:"Таиланд",cn:"泰国",img:"p-phuket",price:310000,yield:8.1,year:2026,plan:"35/65",y:8.4,l:7.6,r:7.4},
  {id:5,name:"Ivory Shore",city:"利马索尔",country:"Кипр",cn:"塞浦路斯",img:"p-limassol",price:780000,yield:5.4,year:2028,plan:"10/90",y:7.1,l:8.2,r:8.8},
  {id:6,name:"Bosphorus Line",city:"伊斯坦布尔",country:"Турция",cn:"土耳其",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0},
- {id:7,name:"Black Sea Crown",city:"巴统",country:"Грузия",cn:"格鲁吉亚",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8}
+ {id:7,name:"Black Sea Crown",city:"巴统",country:"Грузия",cn:"格鲁吉亚",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8},
+ {id:8,name:"Adriatic Stone",city:"布德瓦",country:"Черногория",cn:"黑山",img:"p-budva",price:340000,yield:6.9,year:2027,plan:"40/60",y:7.6,l:7.1,r:7.6},
+ {id:9,name:"Kyrenia Terraces",city:"凯里尼亚",country:"Северный Кипр",cn:"北塞浦路斯",img:"p-kyrenia",price:195000,yield:8.4,year:2026,plan:"35/65",y:8.7,l:6.6,r:6.2}
 ];
 const score=o=>+((o.y*.4+o.l*.3+o.r*.3).toFixed(1));
 data.forEach(o=>o.s=score(o));

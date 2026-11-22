@@ -330,7 +330,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
     <p class="lead">Проверенные проекты в едином формате: цена, план оплаты, срок сдачи, застройщик, риски и сценарии выхода.</p>
     <form class="search" id="search" role="search">
       <label><span>Страна</span>
-        <select id="s-country"><option value="all">Все страны</option><option>ОАЭ</option><option>Индонезия</option><option>Таиланд</option><option>Португалия</option><option>Кипр</option><option>Турция</option><option>Грузия</option></select></label>
+        <select id="s-country"><option value="all">Все страны</option><option>ОАЭ</option><option>Индонезия</option><option>Таиланд</option><option>Португалия</option><option>Кипр</option><option>Турция</option><option>Грузия</option><option>Черногория</option><option>Северный Кипр</option></select></label>
       <label><span>Город</span>
         <select id="s-city"><option value="all">Все города</option></select></label>
       <label><span>Бюджет</span>
@@ -371,6 +371,8 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
       <button class="chip" aria-pressed="false" data-c="Кипр">Лимасол</button>
       <button class="chip" aria-pressed="false" data-c="Турция">Стамбул</button>
       <button class="chip" aria-pressed="false" data-c="Грузия">Батуми</button>
+      <button class="chip" aria-pressed="false" data-c="Черногория">Будва</button>
+      <button class="chip" aria-pressed="false" data-c="Северный Кипр">Кирения</button>
       <label class="sort">Сортировка
         <select id="sort"><option value="score">По рейтингу</option><option value="price">По цене</option><option value="yield">По доходности</option></select>
       </label>
@@ -410,7 +412,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
     <div class="ph reveal"><img src="../img/interior.webp" alt="Пальто цвета кэмел на скамье из травертина" loading="lazy"></div>
     <div class="reveal">
       <p class="eyebrow" style="margin-bottom:20px">Направления</p>
-      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">Семь рынков,<br>один стандарт</h2>
+      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">Девять рынков,<br>один стандарт</h2>
       <ul class="dest" id="dest">
         <li data-c="ОАЭ"><span class="c">Дубай</span><span class="k">Без налога на доход · план оплаты</span><span class="a">→</span></li>
         <li data-c="Индонезия"><span class="c">Бали</span><span class="k">Курортная аренда · leasehold</span><span class="a">→</span></li>
@@ -419,6 +421,8 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
         <li data-c="Кипр"><span class="c">Лимасол</span><span class="k">Средиземноморье · ЕС</span><span class="a">→</span></li>
         <li data-c="Турция"><span class="c">Стамбул</span><span class="k">Крупнейший рынок региона</span><span class="a">→</span></li>
         <li data-c="Грузия"><span class="c">Батуми</span><span class="k">Низкий порог входа · курорт Чёрного моря</span><span class="a">→</span></li>
+        <li data-c="Черногория"><span class="c">Будва</span><span class="k">Адриатика · расчёты в евро</span><span class="a">→</span></li>
+        <li data-c="Северный Кипр"><span class="c">Кирения</span><span class="k">Низкий порог входа · проверка прав собственности</span><span class="a">→</span></li>
       </ul>
     </div>
   </div>
@@ -491,7 +495,9 @@ const data=[
  {id:4,name:"Kamala Hillside",city:"Пхукет",country:"Таиланд",img:"p-phuket",price:310000,yield:8.1,year:2026,plan:"35/65",y:8.4,l:7.6,r:7.4},
  {id:5,name:"Ivory Shore",city:"Лимасол",country:"Кипр",img:"p-limassol",price:780000,yield:5.4,year:2028,plan:"10/90",y:7.1,l:8.2,r:8.8},
  {id:6,name:"Bosphorus Line",city:"Стамбул",country:"Турция",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0},
- {id:7,name:"Black Sea Crown",city:"Батуми",country:"Грузия",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8}
+ {id:7,name:"Black Sea Crown",city:"Батуми",country:"Грузия",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8},
+ {id:8,name:"Adriatic Stone",city:"Будва",country:"Черногория",img:"p-budva",price:340000,yield:6.9,year:2027,plan:"40/60",y:7.6,l:7.1,r:7.6},
+ {id:9,name:"Kyrenia Terraces",city:"Кирения",country:"Северный Кипр",img:"p-kyrenia",price:195000,yield:8.4,year:2026,plan:"35/65",y:8.7,l:6.6,r:6.2}
 ];
 const score=o=>+((o.y*.4+o.l*.3+o.r*.3).toFixed(1));
 data.forEach(o=>o.s=score(o));

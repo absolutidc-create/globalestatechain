@@ -350,7 +350,7 @@ html[dir=rtl] .dest li:hover{padding-left:0;padding-right:14px}
     <p class="lead">مشاريع موثّقة بصيغة واحدة: السعر، خطة الدفع، موعد التسليم، المطوّر، المخاطر وسيناريوهات الخروج.</p>
     <form class="search" id="search" role="search">
       <label><span>الدولة</span>
-        <select id="s-country"><option value="all">جميع الدول</option><option value="ОАЭ">الإمارات</option><option value="Индонезия">إندونيسيا</option><option value="Таиланд">تايلاند</option><option value="Португалия">البرتغال</option><option value="Кипр">قبرص</option><option value="Турция">تركيا</option><option value="Грузия">جورجيا</option></select></label>
+        <select id="s-country"><option value="all">جميع الدول</option><option value="ОАЭ">الإمارات</option><option value="Индонезия">إندونيسيا</option><option value="Таиланд">تايلاند</option><option value="Португалия">البرتغال</option><option value="Кипр">قبرص</option><option value="Турция">تركيا</option><option value="Грузия">جورجيا</option><option value="Черногория">الجبل الأسود</option><option value="Северный Кипр">شمال قبرص</option></select></label>
       <label><span>المدينة</span>
         <select id="s-city"><option value="all">جميع المدن</option></select></label>
       <label><span>الميزانية</span>
@@ -391,6 +391,8 @@ html[dir=rtl] .dest li:hover{padding-left:0;padding-right:14px}
       <button class="chip" aria-pressed="false" data-c="Кипр">ليماسول</button>
       <button class="chip" aria-pressed="false" data-c="Турция">إسطنبول</button>
       <button class="chip" aria-pressed="false" data-c="Грузия">باتومي</button>
+      <button class="chip" aria-pressed="false" data-c="Черногория">بودفا</button>
+      <button class="chip" aria-pressed="false" data-c="Северный Кипр">كيرينيا</button>
       <label class="sort">ترتيب حسب
         <select id="sort"><option value="score">التصنيف</option><option value="price">السعر</option><option value="yield">العائد</option></select>
       </label>
@@ -430,7 +432,7 @@ html[dir=rtl] .dest li:hover{padding-left:0;padding-right:14px}
     <div class="ph reveal"><img src="../img/interior.webp" alt="معطف بلون الجمل على مقعد من الترافرتين" loading="lazy"></div>
     <div class="reveal">
       <p class="eyebrow" style="margin-bottom:20px">الوجهات</p>
-      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">سبعة أسواق،<br>معيار واحد</h2>
+      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">تسعة أسواق،<br>معيار واحد</h2>
       <ul class="dest" id="dest">
         <li data-c="ОАЭ"><span class="c">دبي</span><span class="k">بلا ضريبة دخل · خطط دفع</span><span class="a">←</span></li>
         <li data-c="Индонезия"><span class="c">بالي</span><span class="k">إيجارات سياحية · حق انتفاع</span><span class="a">←</span></li>
@@ -439,6 +441,8 @@ html[dir=rtl] .dest li:hover{padding-left:0;padding-right:14px}
         <li data-c="Кипр"><span class="c">ليماسول</span><span class="k">المتوسط · الاتحاد الأوروبي</span><span class="a">←</span></li>
         <li data-c="Турция"><span class="c">إسطنبول</span><span class="k">أكبر سوق في المنطقة</span><span class="a">←</span></li>
         <li data-c="Грузия"><span class="c">باتومي</span><span class="k">سعر دخول منخفض · منتجع البحر الأسود</span><span class="a">←</span></li>
+        <li data-c="Черногория"><span class="c">بودفا</span><span class="k">ساحل الأدرياتيكي · العملة اليورو</span><span class="a">←</span></li>
+        <li data-c="Северный Кипр"><span class="c">كيرينيا</span><span class="k">سعر دخول منخفض · يلزم التحقق من سندات الملكية</span><span class="a">←</span></li>
       </ul>
     </div>
   </div>
@@ -511,7 +515,9 @@ const data=[
  {id:4,name:"Kamala Hillside",city:"بوكيت",country:"Таиланд",cn:"تايلاند",img:"p-phuket",price:310000,yield:8.1,year:2026,plan:"35/65",y:8.4,l:7.6,r:7.4},
  {id:5,name:"Ivory Shore",city:"ليماسول",country:"Кипр",cn:"قبرص",img:"p-limassol",price:780000,yield:5.4,year:2028,plan:"10/90",y:7.1,l:8.2,r:8.8},
  {id:6,name:"Bosphorus Line",city:"إسطنبول",country:"Турция",cn:"تركيا",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0},
- {id:7,name:"Black Sea Crown",city:"باتومي",country:"Грузия",cn:"جورجيا",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8}
+ {id:7,name:"Black Sea Crown",city:"باتومي",country:"Грузия",cn:"جورجيا",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8},
+ {id:8,name:"Adriatic Stone",city:"بودفا",country:"Черногория",cn:"الجبل الأسود",img:"p-budva",price:340000,yield:6.9,year:2027,plan:"40/60",y:7.6,l:7.1,r:7.6},
+ {id:9,name:"Kyrenia Terraces",city:"كيرينيا",country:"Северный Кипр",cn:"شمال قبرص",img:"p-kyrenia",price:195000,yield:8.4,year:2026,plan:"35/65",y:8.7,l:6.6,r:6.2}
 ];
 const score=o=>+((o.y*.4+o.l*.3+o.r*.3).toFixed(1));
 data.forEach(o=>o.s=score(o));

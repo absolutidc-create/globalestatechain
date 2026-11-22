@@ -330,7 +330,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
     <p class="lead">Geprüfte Projekte in einem Format: Preis, Zahlungsplan, Fertigstellung, Bauträger, Risiken und Exit-Szenarien.</p>
     <form class="search" id="search" role="search">
       <label><span>Land</span>
-        <select id="s-country"><option value="all">Alle Länder</option><option value="ОАЭ">VAE</option><option value="Индонезия">Indonesien</option><option value="Таиланд">Thailand</option><option value="Португалия">Portugal</option><option value="Кипр">Zypern</option><option value="Турция">Türkei</option><option value="Грузия">Georgien</option></select></label>
+        <select id="s-country"><option value="all">Alle Länder</option><option value="ОАЭ">VAE</option><option value="Индонезия">Indonesien</option><option value="Таиланд">Thailand</option><option value="Португалия">Portugal</option><option value="Кипр">Zypern</option><option value="Турция">Türkei</option><option value="Грузия">Georgien</option><option value="Черногория">Montenegro</option><option value="Северный Кипр">Nordzypern</option></select></label>
       <label><span>Stadt</span>
         <select id="s-city"><option value="all">Alle Städte</option></select></label>
       <label><span>Budget</span>
@@ -371,6 +371,8 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
       <button class="chip" aria-pressed="false" data-c="Кипр">Limassol</button>
       <button class="chip" aria-pressed="false" data-c="Турция">Istanbul</button>
       <button class="chip" aria-pressed="false" data-c="Грузия">Batumi</button>
+      <button class="chip" aria-pressed="false" data-c="Черногория">Budva</button>
+      <button class="chip" aria-pressed="false" data-c="Северный Кипр">Kyrenia</button>
       <label class="sort">Sortieren
         <select id="sort"><option value="score">Rating</option><option value="price">Preis</option><option value="yield">Rendite</option></select>
       </label>
@@ -410,7 +412,7 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
     <div class="ph reveal"><img src="../img/interior.webp" alt="Kamelfarbener Mantel auf einer Travertinbank" loading="lazy"></div>
     <div class="reveal">
       <p class="eyebrow" style="margin-bottom:20px">Märkte</p>
-      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">Sieben Märkte,<br>ein Standard</h2>
+      <h2 class="serif" style="font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin-bottom:40px">Neun Märkte,<br>ein Standard</h2>
       <ul class="dest" id="dest">
         <li data-c="ОАЭ"><span class="c">Dubai</span><span class="k">Keine Einkommensteuer · Zahlungspläne</span><span class="a">→</span></li>
         <li data-c="Индонезия"><span class="c">Bali</span><span class="k">Ferienvermietung · Leasehold</span><span class="a">→</span></li>
@@ -419,6 +421,8 @@ h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
         <li data-c="Кипр"><span class="c">Limassol</span><span class="k">Mittelmeer · EU</span><span class="a">→</span></li>
         <li data-c="Турция"><span class="c">Istanbul</span><span class="k">Größter Markt der Region</span><span class="a">→</span></li>
         <li data-c="Грузия"><span class="c">Batumi</span><span class="k">Niedriger Einstieg · Schwarzmeer-Resort</span><span class="a">→</span></li>
+        <li data-c="Черногория"><span class="c">Budva</span><span class="k">Adriaküste · Euro als Währung</span><span class="a">→</span></li>
+        <li data-c="Северный Кипр"><span class="c">Kyrenia</span><span class="k">Niedriger Einstieg · Eigentumstitel prüfen</span><span class="a">→</span></li>
       </ul>
     </div>
   </div>
@@ -491,7 +495,9 @@ const data=[
  {id:4,name:"Kamala Hillside",city:"Phuket",country:"Таиланд",cn:"Thailand",img:"p-phuket",price:310000,yield:8.1,year:2026,plan:"35/65",y:8.4,l:7.6,r:7.4},
  {id:5,name:"Ivory Shore",city:"Limassol",country:"Кипр",cn:"Zypern",img:"p-limassol",price:780000,yield:5.4,year:2028,plan:"10/90",y:7.1,l:8.2,r:8.8},
  {id:6,name:"Bosphorus Line",city:"Istanbul",country:"Турция",cn:"Türkei",img:"p-istanbul",price:520000,yield:6.3,year:2027,plan:"50/50",y:7.8,l:8.0,r:7.0},
- {id:7,name:"Black Sea Crown",city:"Batumi",country:"Грузия",cn:"Georgien",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8}
+ {id:7,name:"Black Sea Crown",city:"Batumi",country:"Грузия",cn:"Georgien",img:"p-batumi",price:165000,yield:9.1,year:2027,plan:"30/70",y:8.9,l:7.0,r:6.8},
+ {id:8,name:"Adriatic Stone",city:"Budva",country:"Черногория",cn:"Montenegro",img:"p-budva",price:340000,yield:6.9,year:2027,plan:"40/60",y:7.6,l:7.1,r:7.6},
+ {id:9,name:"Kyrenia Terraces",city:"Kyrenia",country:"Северный Кипр",cn:"Nordzypern",img:"p-kyrenia",price:195000,yield:8.4,year:2026,plan:"35/65",y:8.7,l:6.6,r:6.2}
 ];
 const score=o=>+((o.y*.4+o.l*.3+o.r*.3).toFixed(1));
 data.forEach(o=>o.s=score(o));
