@@ -7,6 +7,11 @@
 <meta name="description" content="Отобранные новостройки мира для инвестиций: единый формат данных, рейтинг доходности, ликвидности и риска, планы оплаты и сроки сдачи.">
 <link rel="alternate" hreflang="en" href="https://globalestatechain.com/">
 <link rel="alternate" hreflang="ru" href="https://globalestatechain.com/ru/">
+<link rel="alternate" hreflang="de" href="https://globalestatechain.com/de/">
+<link rel="alternate" hreflang="fr" href="https://globalestatechain.com/fr/">
+<link rel="alternate" hreflang="es" href="https://globalestatechain.com/es/">
+<link rel="alternate" hreflang="zh" href="https://globalestatechain.com/zh/">
+<link rel="alternate" hreflang="ar" href="https://globalestatechain.com/ar/">
 <link rel="alternate" hreflang="x-default" href="https://globalestatechain.com/">
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
@@ -274,6 +279,18 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 .drawer .x{align-self:flex-end;background:none;border:0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
 @media (max-width:380px){.brand small{display:none}.brand{font-size:15px;letter-spacing:.2em}.brand .mark{width:28px;height:28px}.act{gap:14px}}
 @media (max-width:340px){.brand{font-size:13px;letter-spacing:.14em;gap:8px}}
+
+.lang-dd{position:relative;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.lang-dd summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;padding:4px 0;border-bottom:1px solid currentColor}
+.lang-dd summary::-webkit-details-marker{display:none}
+.lang-dd[open] summary svg{transform:rotate(180deg)}
+.lang-dd ul{list-style:none;position:absolute;top:calc(100% + 14px);inset-inline-end:-18px;min-width:168px;background:var(--paper);color:var(--ink);border:1px solid var(--line);padding:8px 0;margin:0;box-shadow:0 18px 40px -24px rgba(29,26,22,.35);z-index:70;letter-spacing:.08em;text-transform:none;font-size:13px}
+.lang-dd li a{display:block;padding:9px 20px;opacity:1;transition:background .2s}
+.lang-dd li a:hover{background:var(--sand)}
+.lang-dd li a[aria-current]{color:var(--camel-deep)}
+.lang-dd li a[aria-current]::after{content:" ·"}
+h1,h2,h3,p{overflow-wrap:break-word;hyphens:auto}
+.drawer .lang-list{flex-wrap:wrap;gap:12px 20px;text-transform:none;letter-spacing:.06em}
 </style>
 </head>
 <body>
@@ -288,7 +305,7 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
       <a href="#destinations">Направления</a>
       <a href="#method">Методология</a>
     </nav>
-    <div class="act"><div class="lang"><a href="/" hreflang="en" lang="en">EN</a><span>RU</span></div>
+    <div class="act"><details class="lang-dd"><summary aria-label="Language">RU<svg width="8" height="5" viewBox="0 0 8 5" aria-hidden="true"><path d="M.5.5 4 4 7.5.5" fill="none" stroke="currentColor"/></svg></summary><ul><li><a href="/" hreflang="en" lang="en">English</a></li><li><a href="/ru/" hreflang="ru" lang="ru" aria-current="true">Русский</a></li><li><a href="/de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="/fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="/es/" hreflang="es" lang="es">Español</a></li><li><a href="/zh/" hreflang="zh" lang="zh">中文</a></li><li><a href="/ar/" hreflang="ar" lang="ar">العربية</a></li></ul></details>
     <a href="/ru/account/" class="signin hd">Войти</a>
     <a href="/ru/account/?mode=register" class="btn">Регистрация</a>
     <button class="burger" aria-label="Открыть меню" id="burger"><span></span><span></span></button></div>
@@ -301,7 +318,7 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
     <a href="#objects">Объекты</a><a href="#rating">Рейтинг</a><a href="#destinations">Направления</a><a href="#method">Методология</a><a href="#contact">Подобрать объект</a>
   </nav>
   <div class="auth"><a href="/ru/account/?mode=register" class="btn fill">Регистрация</a><a href="/ru/account/" class="btn">Войти</a></div>
-  <div class="lang"><a href="/" hreflang="en" lang="en">EN</a><span>RU</span></div>
+  <div class="lang lang-list"><a href="/" hreflang="en" lang="en">English</a><span lang="ru">Русский</span><a href="/de/" hreflang="de" lang="de">Deutsch</a><a href="/fr/" hreflang="fr" lang="fr">Français</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/zh/" hreflang="zh" lang="zh">中文</a><a href="/ar/" hreflang="ar" lang="ar">العربية</a></div>
 </div>
 
 <main>
@@ -533,5 +550,6 @@ const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.targ
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 render();renderTable();
 </script>
+<script>document.addEventListener("click",e=>{document.querySelectorAll("details.lang-dd[open]").forEach(d=>{if(!d.contains(e.target))d.removeAttribute("open")})});document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll("details.lang-dd[open]").forEach(d=>d.removeAttribute("open"))})</script>
 </body>
 </html>
