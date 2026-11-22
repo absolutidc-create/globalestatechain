@@ -117,7 +117,7 @@ header:not(.solid) .btn:hover{background:#fff;color:var(--ink);border-color:#fff
 .hero .lead{max-width:44ch;margin-top:24px;font-size:15px;opacity:.9;font-weight:300}
 .hero .eyebrow{color:rgba(255,255,255,.8);margin-bottom:22px}
 
-.search{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr) auto;background:var(--paper);color:var(--ink);max-width:980px}
+.search{margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr) auto;background:var(--paper);color:var(--ink);max-width:1180px}
 .search label{display:flex;flex-direction:column;padding:16px 24px;border-right:1px solid var(--line);cursor:pointer}
 .search label span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
 .search select{border:0;background:transparent;font-size:15px;padding:4px 0 0;appearance:none;cursor:pointer;outline:none}
@@ -229,6 +229,10 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
 @media (max-width:1024px){
   .menu{display:none}.burger{display:block}
   .nav .btn{display:none}
+  .search{grid-template-columns:1fr 1fr}
+  .search label:nth-child(2n){border-right:0}
+  .search label{border-bottom:1px solid var(--line)}
+  .search button{grid-column:1/-1;height:54px}
   .grid{grid-template-columns:repeat(2,1fr)}
   .rating .hide-md{display:none}
 }
@@ -304,8 +308,10 @@ footer .bot{display:flex;justify-content:space-between;gap:20px;padding-top:28px
     <h1>Недвижимость мира <em>с понятной</em> инвестиционной логикой</h1>
     <p class="lead">Проверенные проекты в едином формате: цена, план оплаты, срок сдачи, застройщик, риски и сценарии выхода.</p>
     <form class="search" id="search" role="search">
-      <label><span>Направление</span>
+      <label><span>Страна</span>
         <select id="s-country"><option value="all">Все страны</option><option>ОАЭ</option><option>Индонезия</option><option>Таиланд</option><option>Португалия</option><option>Кипр</option><option>Турция</option></select></label>
+      <label><span>Город</span>
+        <select id="s-city"><option value="all">Все города</option></select></label>
       <label><span>Бюджет</span>
         <select id="s-budget"><option value="0">Любой</option><option value="300000">до $300 000</option><option value="600000">до $600 000</option><option value="1000000">до $1 000 000</option></select></label>
       <label><span>Сдача</span>
@@ -466,11 +472,11 @@ const data=[
 const score=o=>+((o.y*.4+o.l*.3+o.r*.3).toFixed(1));
 data.forEach(o=>o.s=score(o));
 const fmt=n=>"$ "+n.toLocaleString("ru-RU");
-let state={c:"all",budget:0,year:0,sort:"score"};
+let state={c:"all",city:"all",budget:0,year:0,sort:"score"};
 const grid=document.getElementById("grid");
 const favs=new Set();
 function render(){
-  let list=data.filter(o=>(state.c==="all"||o.country===state.c)&&(!state.budget||o.price<=state.budget)&&(!state.year||o.year<=state.year));
+  let list=data.filter(o=>(state.c==="all"||o.country===state.c)&&(state.city==="all"||o.img===state.city)&&(!state.budget||o.price<=state.budget)&&(!state.year||o.year<=state.year));
   list.sort((a,b)=>state.sort==="price"?a.price-b.price:state.sort==="yield"?b.yield-a.yield:b.s-a.s);
   grid.innerHTML=list.length?list.map(o=>`
    <article class="card" tabindex="0" aria-label="${o.name}, ${o.city}">
@@ -489,17 +495,25 @@ function renderTable(){
   const bar=v=>`<div class="bar"><div class="t"><i style="width:${v*10}%"></i></div><span>${v.toFixed(1)}</span></div>`;
   document.getElementById("tbody").innerHTML=t.map((o,i)=>`<tr><td class="rk">${String(i+1).padStart(2,"0")}</td><td class="nm">${o.name}<small>${o.city}, ${o.country}</small></td><td class="hide-sm">${bar(o.y)}</td><td class="hide-sm">${bar(o.l)}</td><td class="hide-md hide-sm">${bar(o.r)}</td><td class="tot">${o.s.toFixed(1)}</td></tr>`).join("");
 }
-function setCountry(c){
-  state.c=c;
+function setCountry(c,city){
+  state.c=c;state.city=city||"all";
   document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===c));
   render();
 }
 document.getElementById("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b)setCountry(b.dataset.c)});
 document.getElementById("sort").addEventListener("change",e=>{state.sort=e.target.value;render()});
 grid.addEventListener("click",e=>{const f=e.target.closest(".fav");if(!f)return;e.stopPropagation();const id=+f.dataset.id;favs.has(id)?favs.delete(id):favs.add(id);render()});
+const sC=document.getElementById("s-country"),sCity=document.getElementById("s-city");
+function fillCities(){const c=sC.value,cur=sCity.value;
+  const list=data.filter(o=>c==="all"||o.country===c);
+  sCity.innerHTML='<option value="all">Все города</option>'+list.map(o=>`<option value="${o.img}">${o.city}</option>`).join("");
+  sCity.value=list.some(o=>o.img===cur)?cur:"all";}
+sC.addEventListener("change",fillCities);
+sCity.addEventListener("change",()=>{const o=data.find(x=>x.img===sCity.value);if(o&&sC.value!==o.country){sC.value=o.country;fillCities();sCity.value=o.img}});
+fillCities();
 document.getElementById("search").addEventListener("submit",e=>{e.preventDefault();
   state.budget=+document.getElementById("s-budget").value;state.year=+document.getElementById("s-year").value;
-  setCountry(document.getElementById("s-country").value);
+  setCountry(document.getElementById("s-country").value,document.getElementById("s-city").value);
   document.getElementById("objects").scrollIntoView({behavior:"smooth"});
 });
 document.getElementById("dest").addEventListener("click",e=>{const li=e.target.closest("li");if(!li)return;state.budget=0;state.year=0;setCountry(li.dataset.c);document.getElementById("objects").scrollIntoView({behavior:"smooth"})});
